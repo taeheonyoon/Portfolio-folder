@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block contents %}
+  {% include 'form_errors.html' %}
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="from-group mb-3">
+        <label for="{{field.id_for_lavel}}">{{field.label}}</label>
+        <input type="text" class="form-control" id="{{field.id_for_lavel}}" name="{{field.name}}" placeholder="{{field.label}}">
+      </div>
+    {% endfor %}
+    <div class="form-group mb-3">
+      <button type="submit" class="btn btn-success">회원가입</button>
+    </div>
+  </form>
+{% endblock contents %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load users_tags %}
+{% block contents %}
+
+  <h1>Your Friends</h1>
+  <ul>
+    {% for friend in friends %}
+      <li>{{ friend.name }}</li>
+      <!--친구 id <form method="post" action="{% url 'friendship:friendship_remove' friend.id %}"> {% csrf_token %} <input type="hidden" name="friend_name" value="{{ friend_name }}"/> <input type="submit" value="remove {{ friend_name }} as a friend"/> <input type="submit" value="친구삭제"/>-->
+    </form>
+  {% endfor %}
+</ul>
+<span class="ml-auto">
+  <button type="button" class="btn btn-light btn-sm">
+    <a href="{% url 'friendship:search_friends' %}">친구추가</a>
+  </button>
+</span>
+
+<div id="link_nav">
+  hello
+  {{ user.name }}
+  <a href="{% url 'friendship:friendship_request_list' %}">친구 요청 목록</a>
+</div>
+{% include "friendship/user_actions.html" %}
+{% endblock %}

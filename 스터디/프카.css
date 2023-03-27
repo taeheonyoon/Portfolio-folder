@@ -1,0 +1,63 @@
+img {
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: inset 0 0 8px;
+}
+.profile-picture {
+  margin-top: 20px;
+  text-align: center;
+}
+div {
+  color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+}
+.main-box {
+  width: 770px;
+  height: 480px;
+  background-color: beige;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: inset 0 0 8px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+}
+.title-name {
+  padding: 5px;
+  margin: 20px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+}
+.title-nickname {
+  padding: 0px;
+  margin: 20px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+}
+.content {
+  position: absolute;
+  top: 12%;
+  left: 50px;
+  line-height: 1;
+}
+.content > p {
+  margin-top: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, 
+  font-size: 18px;
+}
+.profile-box {
+  width: 700px;
+  height: 380px;
+  background: white;
+  border-radius: 20px;
+  position: relative;
+  left: 30px;
+  top: 50px;
+  box-shadow: inset 0 0 8px;
+}
+.info {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  line-height: 1;
+}

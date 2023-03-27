@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* image carousel */
+      .caruosel-wrapper {
+        overflow: hidden;
+      }
+      .caruosel {
+        width: 300vw;
+        transform: translateX(0);
+        transition: all 0.5s;
+      }
+      .slide-box {
+        width: 100vw;
+        height: 700px;
+        float: left;
+      }
+      .slide-box img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caruosel-wrapper">
+      <div class="caruosel">
+        <div class="slide-box">
+          <h1>page1</h1>
+          <form action="" method="get">
+            <div>
+              <button type="button" class="q1" name="q1" id="q1">answer</button>
+            </div>
+          </form>
+        </div>
+        <div class="slide-box">
+          <h1>page2</h1>
+        </div>
+        <div class="slide-box">
+          <h1>page3</h1>
+        </div>
+      </div>
+    </div>
+    <button class="prev btn btn-success" type="prev">prev</button>
+    <button class="next btn btn-primary" type="next">next</button>
+
+    <!--1번 문제-->
+    <script>
+      document
+        .querySelector("#q1")
+        .addEventListener("click", (e) => console.log(e.target.value));
+      var nums = [100, 200, 300, 400, 500];
+      nums.splice(3, 2);
+      console.log(nums);
+    </script>
+    <!--2번 문제-->
+    <script>
+      var arr = [200, 100, 300];
+      arr.splice(2, 0, 10000);
+      console.log(arr);
+    </script>
+    <!--3번 문제-->
+    <script>
+      var arr = [100, 200, 300];
+      console.log(typeof arr);
+    </script>
+    <!--4번 문제-->
+    <script>
+      console.log(typeof 1);
+      console.log(typeof 2.22);
+      console.log(typeof "p");
+      console.log(typeof [1, 2, 3]);
+    </script>
+    <!--5번 문제-->
+    <script>
+      var a = 10;
+      var b = 2;
+
+      for (var i = 1; i < 5; i += 2) {
+        a += i;
+      }
+
+      console.log(a + b);
+    </script>
+    <!--6번 문제-->
+    <script>
+      console.log(!!NaN);
+      console.log(!!1);
+      console.log(!!"");
+      console.log(!!0);
+      console.log(!!undefined);
+    </script>
+    <!--7번 문제-->
+    <script>
+      //정답: 2, 3, 5
+    </script>
+    <!--8번 문제-->
+    <script>
+      var d = {
+        height: 180,
+        weight: 78,
+        weight: 84,
+        temperature: 36,
+        eyesight: 1,
+      };
+
+      console.log(d["weight"]);
+    </script>
+    <!--9번 문제-->
+    <script>
+      var year = "2019";
+      var month = "04";
+      var day = "26";
+      var hour = "11";
+      var minute = "34";
+      var second = "27";
+
+      var result =
+        year +
+        "/" +
+        month +
+        "/" +
+        day +
+        " " +
+        hour +
+        ":" +
+        minute +
+        ":" +
+        second;
+
+      console.log(result);
+    </script>
+    <!--10번 문제-->
+    <script>
+      var n = 5;
+      var star = "";
+      for (var i = 1; i <= n; i++) {
+        for (var j = 1; j <= i; j++) {
+          star += "*";
+        }
+        star += "\n";
+      }
+      console.log(star);
+      var star2 = "";
+      for (var i = 1; i <= n; i++) {
+        for (var j = 1; j <= n - i; j++) {
+          star += " ";
+        }
+        for (var k = 1; k <= 2 * i - 1; k++) {
+          star += "*";
+        }
+        star += "\n";
+      }
+      console.log(star);
+    </script>
+    <!--11번 문제-->
+    <script>
+      let s = 0;
+      for (let i = 1; i <= 100; i++) {
+        s += i;
+      }
+      console.log(s);
+    </script>
+    <!--12번 문제-->
+    <script>
+      class Wizard {
+        constructor(health, mana, armor) {
+          this.health = health;
+          this.mana = mana;
+          this.armor = armor;
+        }
+        attack() {
+          console.log("파이어볼");
+        }
+      }
+
+      const x = new Wizard(545, 210, 10);
+      console.log(x.health, x.mana, x.armor);
+      x.attack();
+    </script>
+    <!--13번 문제-->
+    <script>
+      var a = [
+        "수성",
+        "금성",
+        "지구",
+        "화성",
+        "목성",
+        "토성",
+        "천왕성",
+        "해왕성",
+      ];
+      //var b = prompt("몇번째 행성인가요?");
+      console.log(a[b - 1]);
+    </script>
+    <!--14번 문제-->
+    <script>
+      //var n = prompt("숫자를 입력하세요.");
+      if (n % 3 == 0) {
+        console.log("짝");
+      } else {
+        console.log(n);
+      }
+    </script>
+    <!--15번 문제-->
+    <script>
+      //var name = prompt("이름을 입력하세요.");
+      console.log("안녕하세요. 저는 " + name + "입니다.");
+    </script>
+    <!--16번 문제-->
+    <script>
+      //거꾸로 출력
+      //var a = prompt("입력");
+      //console.log(a.split("").reverse().join(""));
+    </script>
+    <!--17번 문제-->
+    <script>
+      //var h = prompt("키를 입력하세요.");
+      //if (h > 150) {
+      //console.log("YES");
+      //} else {
+      //  console.log("NO");
+      //}
+    </script>
+    <!--18번 문제-->
+    <script>
+      //var a = prompt("입력").split(" ");
+      //console.log(parseInt(a.split + a[1]));
+      //console.log(
+      //  (parseInt(a[0]) + parseInt(a[1]) + parseInt(a[2])) / a.length
+      //);
+    </script>
+    <!--19번 문제-->
+    <script>
+      //공백으로 구분하여 두 숫자 a와 b가 주어지면 a의 b승
+      //var n = prompt("입력").split(" ");
+      //console.log(Math.pow(parseInt(n[0]), parseInt(n[1])));
+    </script>
+    <!--20번 문제-->
+    <script>
+      //var num = prompt("입력").split(" ");
+      //console.log(parseInt(num[0] / num[1]), parseInt(num[0] % num[1]));
+    </script>
+    <!--21번 문제-->
+    <script>
+      //정답 3번
+    </script>
+    <!--22번 문제-->
+    <script>
+      //정답 2번
+    </script>
+    <!--23번 문제-->
+    <script>
+      //x
+    </script>
+    <!--24번 문제-->
+    <script>
+      //var a = prompt("입력").toUpperCase;
+    </script>
+    <!--25번 문제-->
+    <script>
+      //var r = parseInt(prompt("반지름을 입력하세요."));
+      //console.log(r * r * 3.14);
+    </script>
+    <!--26번 문제-->
+    <script>
+      //var a = prompt("행성의 한글 이름을 입력하세요.");
+      //if (a == "수성") {
+      //  console.log("Mercury");
+      //} else if (a == "금성") {
+      //  console.log("Venus");
+      //} else if (a == "지구") {
+      //  console.log("Earth");
+      //} else if (a == "화성") {
+      //  console.log("Mars");
+      //} else if (a == "목성") {
+      //  console.log("Jupiter");
+      //} else if (a == "토성") {
+      //  console.log("Saturn");
+      //} else if (a == "천왕성") {
+      //  console.log("Uranus");
+      //} else if (a == "해왕성") {
+      //  console.log("Neptune");
+      //}
+    </script>
+    <!--27번 문제-->
+    <script>
+      //var name = prompt("입력").split(" ");
+      //var score = prompt("입력").split(" ");
+      //console.log(
+      //"{'" +
+      //  name[0] +
+      //  "':" +
+      //  score[0] +
+      //  ", '" +
+      //  name[1] +
+      //  "':" +
+      //  score[1] +
+      //  "}"
+      //);
+      //for (j = 0; j < Object.entries(dict_num27).length; j++) {
+      //  answer_num_27 +=
+      //  Object.entries(dict_num27)[j][0] +
+      //  ":" +
+      //  Object.entries(dict_num27)[j][1] +
+      //  ", ";
+      //  }
+      //dictinay
+      //var name = prompt("입력").split(" ");
+      //var score = prompt("입력").split(" ");
+      //var dic = {};
+      //dic[name[0]] = score[0];
+      //dic[name[1]] = score[1];
+      //console.log(dic);
+      //var a = prompt().split(" ");
+      //var b = prompt().split(" ");
+      //var arr = {};
+      //for (i = 0; i < a.length; i++) {
+      //arr[a[i]] = Number(b[i]);
+      //}
+      //console.log(arr);
+    </script>
+    <!--28번 문제-->
+    <script>
+      // var a = prompt("입력");
+      // for (var i = 0; i < a.length - 1; i++) {
+      //   console.log(a[i] + " " + a[i + 1]);
+      // }
+    </script>
+    <!--29번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //if (a == a.toUpperCase()) {
+      //  console.log("YES");
+      //} else {
+      //  console.log("NO");
+      //}
+    </script>
+    <!--30번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //var b = prompt("입력");
+      //console.log(a.indexOf(b));
+    </script>
+    <!--31번 문제-->
+    <script>
+      //정답 3번 ???
+    </script>
+    <!--32번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //console.log(a.split(" ").length);
+    </script>
+    <!--33번 문제-->
+    <script>
+      //var a = prompt("입력").split(" ");
+      //console.log(a.reverse().join(" "));
+    </script>
+    <!--34번 문제-->
+    <script>
+      //var a = prompt("입력").split(" ");
+      //if (a.sort() == a) {
+      //  console.log("YES");
+      //} else {
+      //  console.log("NO");
+      //}
+      //var count = prompt("입력");
+
+      //let tall = prompt("키를 입력하세요").split(" ");
+      //let tall_r = "";
+
+      //tall_r = tall
+      //.sort(function (a, b) {
+      //return a - b;
+      //})
+      //.join(" ");
+      // console.log(tall_r);
+
+      //if (tall == tall_r) {
+      //console.log("Yes");
+      //} else {
+      //console.log("No");
+      //}
+    </script>
+    <!--35번 문제-->
+    <script>
+      //function one(n) {
+      //  function two() {
+      //    //pass
+      //  }
+      //  return two;
+      //}
+
+      //const a = one(2);
+      //const b = one(3);
+      //const c = one(4);
+
+      //console.log(a(10));
+      //console.log(b(10));
+      //console.log(c(10));
+      //???
+    </script>
+    <!--36번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //for (var i = 1; i < 10; i++) {
+      //  console.log(a * i);
+      // }
+      // 출력이 한줄로?
+    </script>
+    <!--37번 문제-->
+    <script>
+      //var a = prompt("입력").split(" ");
+      //var b = {};
+      //for (var i = 0; i < a.length; i++){}
+      //???
+    </script>
+    <!--38번 문제-->
+    <script>
+      //var a = prompt("입력").split(" "); ???
+    </script>
+    <!--39번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //console.log(a.replace(/q/gi, "e"));
+    </script>
+    <!--40번 문제-->
+    <script>
+      //var a = prompt("입력")
+      //var b = prompt("입력")
+      //var c = prompt("입력").split(" ")
+      //입력 어떻게? for문?
+    </script>
+    <!--41번 문제-->
+    <script>
+      //var a = parseInt(prompt("입력"));
+      count = 0;
+      for (var i = 2; i < a; i++) {
+        if (a % i == 0) {
+          count++;
+        }
+      }
+      if (count == 0) {
+        console.log("YES");
+      } else {
+        console.log("NO");
+      }
+      //for(i=1;i<=number;i++){
+      //  if(number%i==0){
+      //  result.push(i)
+      //  }
+      //  }
+      //  if(result.length==2){
+      //  answer = 'YES'
+      //  }else{
+      //  answer = 'NO'
+      //  }
+    </script>
+    <!--42번 문제-->
+    <script>
+      //Newdate = new Date();
+    </script>
+    <!--43번 문제-->
+    <script>
+      //let result = [];
+      //let binary = ''
+      //while(num !=1){
+      //if(num%2==0){
+      //result.unshift(num%2)
+      //num = parseInt(num/2)
+      //}else{
+      //result.unshift(num%2)
+      //num = parseInt(num/2)
+      // }
+      //}
+      //result.unshift(1)
+      //for(i=0;i<result.length;i++){
+      //binary+=result[i]
+      // }
+      //console.log(Number(prompt()).toString(2))
+      //console.log(parseInt(prompt(), 2)
+    </script>
+    <!--44번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //var b = a.split("");
+      //console.log(b
+    </script>
+    <!--45번 문제-->
+    <script>
+      //var a = new Date();
+      //console.log(a.getFullYear());
+    </script>
+    <!--46번 문제-->
+    <script></script>
+    <!--47번 문제-->
+    <script></script>
+    <!--48번 문제-->
+    <script>
+      //var a = prompt("입력");
+      //var b = a.split("");
+      //for (var i = 0; i < b.length; i++) {
+      //  if (b[i] == b[i].toUpperCase()) {
+      //    b[i] = b[i].toLowerCase();
+      //  } else {
+      //    b[i] = b[i].toUpperCase();
+      //  }
+      //}
+    </script>
+    <!--49번 문제-->
+    <script>
+      //var a = parseInt(prompt("입력").split(" "));
+      //console.log(Math.max(a));
+      //???
+    </script>
+    <!--50번 문제-->
+    <script>
+      //function bubble(arr) {
+      // let result = arr.slice();
+
+      //   for (let i = 0; i < result.length - 1; i++) {
+      //    for (/**/) {
+      //     if (result[j] > result[j + 1]) {
+      //빈칸
+      //     }
+      //   }
+      // }
+    </script>
+    <script>
+      // image carousel
+      // transform: translateX(?);
+      // 버튼 누를 떄마다 ? +- 100vw
+      const prev = document.querySelector(".prev");
+      const next = document.querySelector(".next");
+      const carousel = document.querySelector(".caruosel");
+
+      let index = 0;
+      next.addEventListener("click", () => {
+        if (index == 2) return;
+
+        index += 1;
+        carousel.style.transform = `translateX(-${100 * index}vw)`;
+      });
+      prev.addEventListener("click", () => {
+        if (index == 0) return;
+
+        index -= 1;
+        carousel.style.transform = `translateX(-${100 * index}vw)`;
+      });
+    </script>
+  </body>
+</html>

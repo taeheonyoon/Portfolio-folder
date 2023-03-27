@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load index_tags %}
+{% load static %}
+{% block sidebar %}{% endblock sidebar %}
+{% block style %}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/styled.css' %}"/>
+
+{% endblock style %}
+{% block contents %}
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead-subheading">우리 어디가?</div>
+      <div class="masthead-heading text-uppercase">
+        <span class="typed" data-typed-items="뭐먹지?, 뭐마시지?, 뭐하지?, 누가 내지?"></span>
+      </div>
+    </div>
+  </header>
+  <!-- Services-->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="text-center pb-3">
+        <h2 class="section-heading text-uppercase">그래서 오늘 뭐 해?</h2>
+        <h3 class="section-subheading text-muted">같이 먹거나 놀 사람을 구하고 계신가요?</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h6 class="border-bottom pb-2 mb-0 text-center">
+            <a href="{% url 'board:index' 'whateat' %}">뭐먹지? 게시판</a>의 최근 게시물
+          </h6>
+          {% recent_eat 3 as post %}
+          {% for p in post %}
+            <div class="d-flex text-muted pt-3">
+              <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#007bff"/>
+                <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+              </svg>
+              <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">
+                  <a href="{% url 'board:detail' p.id %}">{{ p.subject }}</a>
+                </strong>
+                {{p.content|truncatechars:25}}
+              </p>
+            </div>
+          {% endfor %}
+          <p class="text-center pt-1">메뉴를 정했다면?
+            <a href="{% url 'eat:explore_menu' %}">음식점찾기</a>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="border-bottom pb-2 mb-0 text-center">
+            <a href="{% url 'board:index' 'whatdrink' %}">뭐마시지? 게시판</a>의 최근 게시물
+          </h6>
+          {% recent_drink 3 as post %}
+          {% for p in post %}
+            <div class="d-flex text-muted pt-3">
+              <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#e83e8c"/>
+                <text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text>
+              </svg>
+              <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">
+                  <a href="{% url 'board:detail' p.id %}">{{ p.subject }}</a>
+                </strong>
+                {{p.content|truncatechars:25}}
+              </p>
+            </div>
+          {% endfor %}
+          <p class="text-center pt-1">메뉴를 정했다면?
+            <a href="{% url 'drink:explore_menu' %}">주점/카페찾기</a>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="border-bottom pb-2 mb-0 text-center">
+            <a href="{% url 'board:index' 'whatdo' %}">뭐하지? 게시판</a>의 최근 게시물
+          </h6>
+          {% recent_do 3 as post %}
+          {% for p in post %}
+            <div class="d-flex text-muted pt-3">
+              <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#6f42c1"/>
+                <text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text>
+              </svg>
+              <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">
+                  <a href="{% url 'board:detail' p.id %}">{{ p.subject }}</a>
+                </strong>
+                {{p.content|truncatechars:25}}
+              </p>
+            </div>
+          {% endfor %}
+          <p class="text-center pt-1">
+            뭘 할지 정했다면?
+            <a href="{% url 'play:explore_menu' %}">놀곳 찾기</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock contents %}
+{% block script %}
+  <script src="{% static 'js/typed.js' %}"></script>
+  <script src="{% static 'js/mained.js' %}"></script>
+{% endblock script %}

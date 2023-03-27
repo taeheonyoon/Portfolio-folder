@@ -1,0 +1,92 @@
+{% extends 'top.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+{% endblock style %}
+{% block contents %}
+  <div class="container my-3">
+    <div class="row justify-content-md-center border-bottom pb-4">
+      <div class="col-2">
+        <a href="#imageModal" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <img src="{{user.profile.image.url}}" alt="" class="rounded-circle profile_change" title="프로필 사진 변경">
+        </a>
+      </div>
+      <div class="col-6">
+        <h4>
+          <!--로그인 사용자 name-->
+          {{user.name}}
+        </h4>
+        <div class="row my-3">
+          <div class="col-3">
+            <span>게시물</span>
+            <span>
+              <!--사용자가 작성한 게시물 숫자-->
+              {{contents.count}}
+            </span>
+          </div>
+          <div class="col-3">
+            <span>팔로우</span>
+            <span>
+              <!--사용자 팔로잉 숫자-->
+            </span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <!--로그인 사용자 nickname-->
+            {{user.nickname}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'users/profile_modal.html' %}
+{% endblock contents %}
+{% block script %}
+  <script>
+    //현재사진삭제 클릭이 되면 a 태그 기능 중지
+    //ajax로 요청 보내기 "{% url 'user_profile_delete' %}"
+
+    $(".delete").on("click", function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        url: "{% url 'user_profile_delete' %}",
+
+        success: function (response) {
+          console.log(response);
+          location.reload();
+          //http : 127.0.0.1:8000/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+
+    //프로필 사진 변경 클릭 되면 사용자가 변경할 이미지를 선택
+    //사용자가 선택한 이미지를 서버로 전송(ajax)
+
+    $("#file").on("change", function (e) {
+
+      const form = document.querySelector("#image_change");
+
+      formData = new FormData(form);
+
+      $.ajax({
+        url: "{% url 'user_profile_update' %}", ///http://127.0.0.1:8000/users/profile/update/
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          console.log(response);
+          location.reload(); //http://127.0.0.1:8000/users/profile/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+  </script>
+{% endblock script %}

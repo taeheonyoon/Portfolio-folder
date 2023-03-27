@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% block style %}
+  <style>
+
+    .image.is-64x64 {
+      height: 64px;
+      width: 64px;
+    }
+
+    .media {
+      align-items: flex-start;
+      display: flex;
+      text-align: inherit;
+    }
+
+    .media .content:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+
+    .media .media {
+      border-top: 1px solid rgba(219, 219, 219, 0.5);
+      display: flex;
+      padding-top: 0.75rem;
+    }
+
+    .media .media .content:not(:last-child),
+    .media .media .control:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    .media .media .media {
+      padding-top: 0.5rem;
+    }
+
+    .media .media .media+.media {
+      margin-top: 0.5rem;
+    }
+
+    .media+.media {
+      border-top: 1px solid rgba(219, 219, 219, 0.5);
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+
+    .media.is-large+.media {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .media-left,
+    .media-right {
+      flex-basis: auto;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .media-left {
+      margin-right: 1rem;
+    }
+
+    .media-right {
+      margin-left: 1rem;
+    }
+
+    .media-content {
+      flex-basis: auto;
+      flex-grow: 1;
+      flex-shrink: 1;
+      text-align: inherit;
+    }
+
+    @media screen and (max-width: 768px) {
+      .media-content {
+        overflow-x: auto;
+      }
+    }
+  </style>
+{% endblock style %} {% endcomment %}
+{% block contents %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Clarence Taylor</span>
+    <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" "{% static 'img/drk10.png' %}" alt="..."/></span>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="#about">게시판</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+{% include 'navbar.html' %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <main class="col col-xl-9 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+          <div class="box shadow-sm rounded bg-white mb-3 osahan-chat">
+            <h5 class="pl-3 pt-3 pr-3 border-bottom mb-0 pb-3">Messaging</h5>
+            <div class="row m-0">
+              <div class="border-right col-lg-5 col-xl-4 px-0">
+                <div class="osahan-chat-left">
+                  <div class="position-relative icon-form-control p-3 border-bottom">
+                    <i class="feather-search position-absolute"></i>
+                    <input placeholder="Search messages" type="text" class="form-control">
+                  </div>
+                  <div class="" style="overflow-y: scroll; height: 500px">
+                    <div class="">
+                      <aside>
+                        {% for message in messages %}
+                          <a class="{% if active_direct == message.user.name %}is-active{% endif %}" href="{% url 'directs' message.user.name %}">
+                            <div class="box">
+                              <article class="media">
+                                <div class="media-left">
+                                  <figure class="image is-64x64">
+                                    {% if message.user.profile.image.url %}
+                                      <img style="width: 100%; height: 100%;" src="{{ message.user.profile.image.url }}" alt="Placeholder image">
+                                    {% else %}
+                                      <img style="width: 10px; height: 10px;" src="{% static 'img/default.png' %}" alt="Placeholder image">
+                                    {% endif %}
+                                  </figure>
+                                </div>
+                                <div class="media-content">
+                                  <div class="content">
+                                    <p>
+                                      <strong>{{ message.user.name }}님과의 DM BOX</strong>
+                                    </p>
+                                  </div>
+                                  <div class="content">
+                                    {% if message.unread %}
+                                      <p style="font-weight: bold; color: red;">
+                                        <i class="material-icons">mark_chat_unread</i>
+                                        {{ message.unread }}
+                                      </p>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </article>
+                            </div>
+                          </a>
+                        {% endfor %}
+                      </aside>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7 col-xl-8 px-0">
+                <div class="p-3 d-flex align-items-center  border-bottom osahan-post-header">
+                  <div class="font-weight-bold mr-1 overflow-hidden">
+                    <div class="text-truncate">{{message.user.name}}</div>
+                  </div>
+                  <span class="ml-auto">
+                    <button type="button" class="btn btn-light btn-sm rounded">
+                      <i class="feather-phone"></i>
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm rounded">
+                      <i class="feather-video"></i>
+                    </button>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather-more-vertical"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-trash"></i>
+                          Delete</button>
+                        <button class="dropdown-item" type="button">
+                          <i class="feather-x-circle"></i>
+                          Turn Off</button>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+                <div class="osahan-chat-box p-3 border-top border-bottom bg-light">
+                  {% for direct in directs %}
+                    <div class="text-center my-3">
+                      <span class="px-3 py-2 small bg-white shadow-sm  rounded">{{ direct.date|date:'N d G:i'}}</span>
+                    </div>
+                    <div class="box">
+                      <article class="media">
+                        <div class="media-left"></div>
+                        <div class="media-content">
+                          <div class="content">
+                            {% if not user.name == direct.sender.name %}
+                              <p>
+                                <strong>보낸 사람:{{ direct.sender.name }}</strong>
+                              </p>
+                            {% else %}
+                              <p>
+                                <strong>나:</strong>
+                              </p>
+                            {% endif %}
+                            <div>{{ direct.body }}</div>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="p-3 d-flex align-items-center">
+                  <span class="ml-auto">
+                    <form role="form" method="POST" action="{% url 'send_direct' %}">
+                      {% csrf_token %}
+                      <article class="media">
+
+                        <div class="media-content">
+                          <input type="hidden" name="to_user" value="{{ active_direct }}">
+                          <div class="field">
+                            <p class="control">
+                              <textarea style="width: 500px;" class="textarea" name="body" placeholder="Add a comment..." rows="2"></textarea>
+                            </p>
+                          </div>
+                          <nav class="level">
+                            <div class="level-left">
+                              <div class="level-item">
+                                <button type="submit" name="action" class="mx-1 button is-info">Send</buttom>
+                                <button type="button" class="mx-1 btn btn-light btn-sm rounded">
+                                  <i class="feather-image"></i>
+                                </button>
+                                <button type="button" class="mx-1 btn btn-light btn-sm rounded">
+                                  <i class="feather-paperclip"></i>
+                                </button>
+                                <button type="button" class="mx-1btn btn-light btn-sm rounded">
+                                  <i class="feather-camera"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </nav>
+                        </div>
+                      </article>
+                    </form>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <aside class="col col-xl-3 order-xl-2 col-lg-12 order-lg-2 col-12">
+          <div class="box mb-3 shadow-sm border rounded bg-white list-sidebar">
+            <div class="box-title p-3">
+              <h6 class="m-0">Manage my network</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <a href="{% url 'usersearch' %}" class="button is-success">New message</a>
+              <div class="columns is-mobile">
+                <div class="column is-offset-one-fifth"></div>
+              </div>
+            </ul>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </div>
+{% endblock contents %}

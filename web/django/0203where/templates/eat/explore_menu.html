@@ -1,0 +1,708 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/mystyle2.css' %}">
+{% endblock style %}
+
+{% block contents %}
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-6">
+        <div class="row row-cols-5">
+          {% for menu in menu_list %}
+            <div class="col">
+              <a href="{% url 'eat:click_count' menu.pk %}">
+                <img style="width: 80px; height: 60px;" src="{{menu.image.url}}" alt="">
+                <a href="#">
+                  <p class="selected">{{menu.name}}</p>
+                </a>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <button class="btn btn-primary btn-lg">메뉴 하나 찍어줘!</button>
+      </div>
+      <div class="col-4 d-flex align-items-center">
+        <div>
+          <img style="width: 300px; height: 200px;" src="/media/{{random_menu.image}}" alt="" class="random_pick show">
+          <p>
+            <a href="#searchKeyword" id="random_pick" class="random_pick show" style="text-decoration-line: none; color: black;">{{random_menu.name}}</a>
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-success show">이거 먹을래!</button>
+          <button class="btn btn-danger show">별로야! 리셋!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 목록 지도 시작 -->
+  <div>
+    <input type="text" class="text_custom" id="searchKeyword" name="searchKeyword">
+    <button id="btn_select">찾기</button>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <div class="rst_wrap">
+        <p>검색결과</p>
+        <button id="find_route">경로보기</button>
+        <h1 id="result"></h1>
+        <div class="rst mCustomScrollbar">
+          <ul id="searchResult" name="searchResult" class="searchResult"></ul>
+        </div>
+      </div>
+    </div>
+    <div id="map_div" class="map_wrap col-10"></div>
+  </div>
+  <!-- 목록 지도 끝 -->
+
+  <!-- 경로 지도 시작-->
+
+  <div id="map_wrap" class="map_wrap3">
+    <div id="map_div"></div>
+  </div>
+  <div class="map_act_btn_wrap clear_box"></div>
+
+  <!-- 경로 지도 끝-->
+  <section class="section pt-5 pb-5 homepage-add-section">
+    <div class="section-header text-center">
+      <h2>클릭수 베스트 4대천왕</h2>
+      <br>
+      <span class="line"></span>
+      <div class="row">
+        {% for menu in top4_menu %}
+          <div class="col-md-3 col-6">
+            <div class="products-box">
+              <a href="#searchKeyword"><img alt="" src="{{menu.image.url}}" class="img-fluid rounded"></a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-5 pb-5 products-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>근처 인기있는 맛집</h2>
+        <br>
+        <span class="line"></span>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="owl-carousel owl-carousel-four owl-theme">
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-success"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="http://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1910927846?placePath=%3Fentry=pll%26from=nx%26fromNxList=true">
+                    <img src="{% static 'img/mat2.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="http://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1910927846?placePath=%3Fentry=pll%26from=nx%26fromNxList=true" class="text-black">난포 성수점</a>
+                    </h6>
+                    <p class="text-gray mb-3">강된장쌈밥/새우감자전</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        20–25 min</span>
+                      <span class="float-right text-black-50">
+                        10,000-15,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-success"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-warning"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1115969228?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat3.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1115969228?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">미쁘동 서울숲</a>
+                    </h6>
+                    <p class="text-gray mb-3">토마토 연어국수</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        15,000-20,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-warning"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1390563803?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat6.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1390563803?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">화화담 성수</a>
+                    </h6>
+                    <p class="text-gray mb-3">바질 크림 수비드 스테이크</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        16,800-23,800KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-warning"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1876798043?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat7.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1876798043?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">우리마키 성수점</a>
+                    </h6>
+                    <p class="text-gray mb-3">우리마키</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        7,000-22,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-warning"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="http://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1836968731?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat8.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="http://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1836968731?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">호호식당 성수</a>
+                    </h6>
+                    <p class="text-gray mb-3">가츠나베 정식</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        16,000-21,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-warning"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1204635344?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&c=15,0,0,0,dh">
+                    <img src="{% static 'img/mat9.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1204635344?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&c=15,0,0,0,dh" class="text-black">성수명당</a>
+                    </h6>
+                    <p class="text-gray mb-3">명당 로제 떡볶이</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        21,000-43,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-success"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-danger"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1846605156?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=truel">
+                    <img src="{% static 'img/mat4.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1846605156?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">꾸아 성수점
+                      </a>
+                    </h6>
+                    <p class="text-gray mb-3">왕갈비 쌀국수</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        14,000-26,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-success"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/11721256?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat1.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/11721256?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">소문난 성수 감자탕
+                      </a>
+                    </h6>
+                    <p class="text-gray mb-3">감자탕 소•중•대</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        26,000-40,000KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="star position-absolute">
+                    <span class="badge badge-success"></span>
+                  </div>
+                  <div class="favourite-heart text-danger position-absolute">
+                    <a href="detail.html"></a>
+                  </div>
+                  <div class="member-plan position-absolute">
+                    <span class="badge badge-dark"></span></div>
+                  <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1172915589?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true">
+                    <img src="{% static 'img/mat5.png' %}" class="img-fluid item-img">
+                  </a>
+                </div>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1">
+                      <a href="https://map.naver.com/v5/search/%EC%84%B1%EC%88%98%EB%A7%9B%EC%A7%91/place/1172915589?placePath=%3Fentry=pll%26from=nx%26fromNxList=true&placeSearchOption=entry=pll%26fromNxList=true" class="text-black">제스티살룬 성수
+                      </a>
+                    </h6>
+                    <p class="text-gray mb-3">Zesty garlic burger</p>
+                    <p class="text-gray mb-3 time">
+                      <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                        <i class="icofont-wall-clock"></i>
+                        15–25 min</span>
+                      <span class="float-right text-black-50">
+                        10,300-12,300KRW</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-danger"></span>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock contents %}
+{% block script %}
+
+  <script>
+    $(".btn-primary").on("click", () => {
+      $(".random_pick").toggleClass("show");
+      $(".btn-success").toggleClass("show");
+      $(".btn-danger").toggleClass("show");
+    });
+
+    $(".btn-danger").on("click", () => {
+      location.reload();
+    });
+
+    $("#show_list_map").on("click", () => {
+      $("#list_map").toggleClass("show");
+    });
+
+    // 메뉴 고르면 검색창에 성수역 + 메뉴 보내기
+    $(".selected").on("click", function (e) {
+      e.preventDefault();
+      let selected_menu = $(this).html();
+      console.log("성수역 " + selected_menu);
+      $('#searchKeyword').val("성수역 " + selected_menu);
+    });
+
+    // 랜덤메뉴 고르면 검색창에 성수역 + 메뉴 보내기
+    $(".btn-success").on("click", function () {
+      let selected_menu = $("#random_pick").html();
+      console.log("성수역 " + selected_menu);
+      $("#searchKeyword").val("성수역 " + selected_menu);
+    });
+
+    // 지도 시작
+    var map;
+    var marker;
+    var marker_s,
+      marker_e,
+      marker_p1,
+      marker_p2;
+    var totalMarkerArr = [];
+    var drawInfoArr = [];
+    var resultdrawArr = [];
+    var markerArr = [];
+
+    var startX = 127.057169;
+    var startY = 37.5452000;
+
+    var endX = 127.05204278035879;
+    var endY = 37.54251386260235;
+
+    var centerX = (startX + endX) / 2
+    var centerY = (startY + endY) / 2
+
+    window.addEventListener('load', function () {
+      // 1. 지도 띄우기
+      map = new Tmapv2.Map("map_div", {
+        center: new Tmapv2.LatLng(37.5452000, 127.057169),
+        width: "70%",
+        height: "400px",
+        zoom: 18,
+        zoomControl: true,
+        scrollwheel: true
+
+      });
+    });
+
+    // 2. POI 통합 검색 API 요청
+    $("#btn_select").click(function () {
+      var searchKeyword = $('#searchKeyword').val();
+
+      $.ajax({
+        method: "GET",
+        url: "https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result",
+        async: false,
+        data: {
+          "appKey": "l7xx9267263e69ab412097c3d02f3a67cf65",
+          "searchKeyword": searchKeyword,
+          "resCoordType": "EPSG3857",
+          "reqCoordType": "WGS84GEO",
+          "count": 7,
+          "centerLon": 127.057169,
+          "centerLat": 37.5452000,
+          "radius": 2
+        },
+        success: function (response) {
+          var resultpoisData = response.searchPoiInfo.pois.poi;
+
+          // 기존 마커, 팝업 제거
+          if (markerArr.length > 0) {
+            for (var i in markerArr) {
+              markerArr[i].setMap(null);
+            }
+          }
+          var innerHtml = ""; // Search Reulsts 결과값 노출 위한 변수
+          var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
+
+          for (var k in resultpoisData) {
+
+            var noorLat = Number(resultpoisData[k].noorLat);
+            var noorLon = Number(resultpoisData[k].noorLon);
+            var name = resultpoisData[k].name;
+
+            var pointCng = new Tmapv2.Point(noorLon, noorLat);
+            var projectionCng = new Tmapv2
+              .Projection
+              .convertEPSG3857ToWGS84GEO(pointCng);
+
+            var lat = projectionCng._lat;
+            var lon = projectionCng._lng;
+
+            var markerPosition = new Tmapv2.LatLng(lat, lon);
+
+            marker = new Tmapv2.Marker({
+              position: markerPosition,
+              //icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
+              icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" + k + ".png",
+              iconSize: new Tmapv2.Size(24, 38),
+              title: name,
+              map: map
+            });
+
+            innerHtml += "<li class='result_each' data-lat='" + lat + "' data-lon='" + lon + "'>";
+            innerHtml += "<img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" + k + ".png' style='vertical-align:middle;'/>";
+            innerHtml += "<span>" + name + "</span>";
+            innerHtml += "</li>"
+
+            markerArr.push(marker);
+            positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
+          }
+
+          $("#searchResult").html(innerHtml); //searchResult 결과값 노출
+          map.panToBounds(positionBounds); // 확장된 bounds의 중심으로 이동시키기
+          map.zoomOut();
+
+        },
+        error: function (request, status, error) {
+          console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+      });
+    });
+
+    marker_s = new Tmapv2.Marker({
+      position: new Tmapv2.LatLng(startY, startX),
+      icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
+      iconSize: new Tmapv2.Size(24, 38),
+      map: map
+    });
+
+    // 도착
+    marker_e = new Tmapv2.Marker({
+      position: new Tmapv2.LatLng(endY, endX),
+      icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
+      iconSize: new Tmapv2.Size(24, 38),
+      map: map
+    });
+
+    // 3. 경로탐색 API 사용요청
+    $("#find_route").click(function () {
+      $.ajax({
+        method: "POST",
+        url: "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
+        async: false,
+        data: {
+          "appKey": "l7xx9267263e69ab412097c3d02f3a67cf65",
+          "startX": startX,
+          "startY": startY,
+          "endX": endX,
+          "endY": endY,
+          "reqCoordType": "WGS84GEO",
+          "resCoordType": "EPSG3857",
+          "startName": "출발지",
+          "endName": "도착지"
+        },
+        success: function (response) {
+          var resultData = response.features;
+
+          //결과 출력
+          var tDistance = "총 거리 : " + (
+          (resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
+          var tTime = " 총 시간 : " + (
+          (resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+
+          $("#result").text(tDistance + tTime);
+
+          //기존 그려진 라인 & 마커가 있다면 초기화
+          if (resultdrawArr.length > 0) {
+            for (var i in resultdrawArr) {
+              resultdrawArr[i].setMap(null);
+            }
+            resultdrawArr = [];
+          }
+
+          drawInfoArr = [];
+
+          for (var i in resultData) { //for문 [S]
+            var geometry = resultData[i].geometry;
+            var properties = resultData[i].properties;
+            var polyline_;
+
+            if (geometry.type == "LineString") {
+              for (var j in geometry.coordinates) {
+                // 경로들의 결과값(구간)들을 포인트 객체로 변환
+                var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
+                // 포인트 객체를 받아 좌표값으로 변환
+                var convertPoint = new Tmapv2
+                  .Projection
+                  .convertEPSG3857ToWGS84GEO(latlng);
+                // 포인트객체의 정보로 좌표값 변환 객체로 저장
+                var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+                // 배열에 담기
+                drawInfoArr.push(convertChange);
+              }
+            } else {
+              var markerImg = "";
+              var pType = "";
+              var size;
+
+              if (properties.pointType == "S") { //출발지 마커
+                markerImg = "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png";
+                pType = "S";
+                size = new Tmapv2.Size(24, 38);
+              } else if (properties.pointType == "E") { //도착지 마커
+                markerImg = "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png";
+                pType = "E";
+                size = new Tmapv2.Size(24, 38);
+              } else { //각 포인트 마커
+                markerImg = "http://topopen.tmap.co.kr/imgs/point.png";
+                pType = "P";
+                size = new Tmapv2.Size(8, 8);
+              }
+
+              // 경로들의 결과값들을 포인트 객체로 변환
+              var latlon = new Tmapv2.Point(geometry.coordinates[0], geometry.coordinates[1]);
+
+              // 포인트 객체를 받아 좌표값으로 다시 변환
+              var convertPoint = new Tmapv2
+                .Projection
+                .convertEPSG3857ToWGS84GEO(latlon);
+
+              var routeInfoObj = {
+                markerImage: markerImg,
+                lng: convertPoint._lng,
+                lat: convertPoint._lat,
+                pointType: pType
+              };
+
+              // Marker 추가
+              marker_p = new Tmapv2.Marker({
+                position: new Tmapv2.LatLng(routeInfoObj.lat, routeInfoObj.lng),
+                icon: routeInfoObj.markerImage,
+                iconSize: size,
+                map: map
+              });
+            }
+          } //for문 [E]
+          drawLine(drawInfoArr);
+        },
+        error: function (request, status, error) {
+          console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+      });
+    });
+
+    function addComma(num) {
+      var regexp = /\B(?=(\d{3})+(?!\d))/g;
+      return num
+        .toString()
+        .replace(regexp, ',');
+    }
+
+    function drawLine(arrPoint) {
+      var polyline_;
+
+      polyline_ = new Tmapv2.Polyline({path: arrPoint, strokeColor: "#DD0000", strokeWeight: 6, map: map});
+      resultdrawArr.push(polyline_);
+    }
+
+    $(".searchResult").on('click', 'li', function (e) {
+      endX = $(this).data("lon");
+      endY = $(this).data("lat");
+      console.log(endX, endY);
+    })
+    // 장소검색지도 끝
+  </script>
+
+{% endblock script %}

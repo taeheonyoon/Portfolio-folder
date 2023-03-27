@@ -1,0 +1,874 @@
+{% load static %}
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>이거머거</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap core CSS-->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/fontawesome/css/all.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="{% static 'vendor/select2/css/select2.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/osahan.css' %}" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.theme.css' %}">
+    <style>
+      .custom-control-input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img alt="logo" src="{% static 'img/favicon.png' %}">
+          <span>이거머거</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">뭐먹지?
+                <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                뭐마시지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="{% url 'listing' %}">주변 술집</a>
+                <a class="dropdown-item" href="detail.html">회식</a>
+                <a class="dropdown-item" href="checkout.html">혼술</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                뭐하지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="{% url 'listing' %}">인도어</a>
+                <a class="dropdown-item" href="detail.html">아웃도어</a>
+                <a class="dropdown-item" href="checkout.html">여행</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                누가 내지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="track-order.html">돌려돌려 돌림판</a>
+                <a class="dropdown-item" href="invoice.html">사다리 게임</a>
+                <a class="dropdown-item" href="login.html">미니게임</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown dropdown-cart">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-clipboard-list"></i>
+                게시판
+                <span class="badge badge-success">5</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="invoice.html">이집 추천</a>
+                <a class="dropdown-item" href="login.html">음식사진 자랑하기</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img alt="Generic placeholder image" src="{% static 'img/user/4.png' %}" class="nav-osahan-pic rounded-pill">
+                내 정보
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="orders.html#orders">
+                  <i class="icofont-food-cart"></i>
+                  내가 쓴글</a>
+                <a class="dropdown-item" href="orders.html#offers">
+                  <i class="icofont-sale-discount"></i>
+                  할인중</a>
+                <a class="dropdown-item" href="orders.html#favourites">
+                  <i class="icofont-heart"></i>
+                  찜한 맛집</a>
+                <a class="dropdown-item" href="orders.html#payments">
+                  <i class="icofont-credit-card"></i>
+                  미리 결제</a>
+                <a class="dropdown-item" href="orders.html#addresses">
+                  <i class="icofont-location-pin"></i>
+                  마이 페이지</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="pt-5 pb-5 homepage-search-block position-relative">
+      <div class="banner-overlay"></div>
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-8">
+            <div class="homepage-search-title">
+              <h1 class="mb-2 font-weight-normal">
+                <span class="font-weight-bold">오늘 뭐먹지?</span>
+                A.I 랜덤 메뉴 추천</h1>
+              <h5 class="mb-5 text-secondary font-weight-normal">주변 인기 음식점, 카페, 술집, 필터걸고 랜덤고고</h5>
+            </div>
+            <div class="homepage-search-form">
+              <form class="form-noborder">
+                <div class="form-row">
+                  <div class="col-lg-3 col-md-3 col-sm-12 form-group">
+                    <div class="location-dropdown">
+                      <i class="icofont-location-arrow"></i>
+                      <select class="custom-select form-control-lg">
+                        <option>
+                          검색
+                        </option>
+                        <option>
+                          아침메뉴 추천
+                        </option>
+                        <option>
+                          점심메뉴 추천
+                        </option>
+                        <option>
+                          저녁메뉴 추천
+                        </option>
+                        <option>
+                          카페에서 카페인 한잔?
+                        </option>
+                        <option>
+                          배달고고
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-12 form-group">
+                    <input type="text" placeholder="찾는 위치 입력하기" class="form-control form-control-lg">
+                    <a class="locate-me" href="#">
+                      <i class="icofont-ui-pointer"></i>
+                      내 위치</a>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-12 form-group">
+                    <a href="listing.html" class="btn btn-primary btn-block btn-lg btn-gradient">검색</a>
+                    <!--<button type="submit" class="btn btn-primary btn-block btn-lg btn-gradient">Search</button>-->
+                  </div>
+                </div>
+              </form>
+            </div>
+            <button class="btn btn-primary" id="foodcategory">뭐먹지?</button>
+            <ul class="category_list show">
+              {% for FoodCategory in FoodCategory_list %}
+                <li>
+                  <a class="category{{forloop.counter}}" href="#">{{FoodCategory.category}}</a>
+                  <ul class="menu_list{{forloop.counter}} show">
+                    {% for i in FoodCategory.foodmenu_set.all %}
+                      <li>
+                        <a class="selected" href="#">{{i.menu}}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            </ul>
+            <div class="filters-card-body card-shop-filters">
+              <div class="map_wrap">
+                <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                <div id="menu_wrap" class="bg_white">
+                  <div class="option">
+                    <div>
+                      <form onsubmit="searchPlaces(); return false;">
+                        키워드 :
+                        <input type="text" value="성수역" id="keyword" size="15">
+                        <button type="submit">검색하기</button>
+                      </form>
+                    </div>
+                  </div>
+                  <hr>
+                  <ul id="placesList"></ul>
+                  <div id="pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pt-5 pb-5 bg-white homepage-add-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-6">
+        <div class="products-box">
+          <a href="listing.html"><img alt="" src="{% static 'img/pro1.jpg' %}" class="img-fluid rounded"></a>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="products-box">
+          <a href="listing.html"><img alt="" src="{% static 'img/pro2.jpg' %}" class="img-fluid rounded"></a>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="products-box">
+          <a href="listing.html"><img alt="" src="{% static 'img/pro3.jpg' %}" class="img-fluid rounded"></a>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="products-box">
+          <a href="listing.html"><img alt="" src="{% static 'img/pro4.jpg' %}" class="img-fluid rounded"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pt-5 pb-5 products-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>근처 인기있는 맛집</h2>
+      <p>Top restaurants, cafes, pubs, and bars in Ludhiana, based on trends</p>
+      <span class="line"></span>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel owl-carousel-four owl-theme">
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute">
+                  <span class="badge badge-success">
+                    <i class="icofont-star"></i>
+                    3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute">
+                  <a href="detail.html">
+                    <i class="icofont-heart"></i>
+                  </a>
+                </div>
+                <div class="member-plan position-absolute">
+                  <span class="badge badge-dark">Promoted</span></div>
+                <a href="detail.html">
+                  <img src="{% static 'img/list/1.png' %}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1">
+                    <a href="detail.html" class="text-black">World Famous</a>
+                  </h6>
+                  <p class="text-gray mb-3">North Indian • American • Pure veg</p>
+                  <p class="text-gray mb-3 time">
+                    <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                      <i class="icofont-wall-clock"></i>
+                      20–25 min</span>
+                    <span class="float-right text-black-50">
+                      $250 FOR TWO</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-success">OFFER</span>
+                  <small>65% off | Use Coupon OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute">
+                  <span class="badge badge-warning">
+                    <i class="icofont-star"></i>
+                    3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute">
+                  <a href="detail.html">
+                    <i class="icofont-heart"></i>
+                  </a>
+                </div>
+                <div class="member-plan position-absolute">
+                  <span class="badge badge-dark">Promoted</span></div>
+                <a href="detail.html">
+                  <img src="{% static 'img/list/3.png' %}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1">
+                    <a href="detail.html" class="text-black">Bite Me Sandwiches</a>
+                  </h6>
+                  <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                  <p class="text-gray mb-3 time">
+                    <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                      <i class="icofont-wall-clock"></i>
+                      15–25 min</span>
+                    <span class="float-right text-black-50">
+                      $100 FOR TWO</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-danger">OFFER</span>
+                  <small>65% off | Use Coupon OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute">
+                  <span class="badge badge-success">
+                    <i class="icofont-star"></i>
+                    3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute">
+                  <a href="detail.html">
+                    <i class="icofont-heart"></i>
+                  </a>
+                </div>
+                <div class="member-plan position-absolute">
+                  <span class="badge badge-danger">Promoted</span></div>
+                <a href="detail.html">
+                  <img src="{% static 'img/list/6.png' %}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1">
+                    <a href="detail.html" class="text-black">The osahan Restaurant
+                    </a>
+                  </h6>
+                  <p class="text-gray mb-3">North • Hamburgers • Pure veg</p>
+                  <p class="text-gray mb-3 time">
+                    <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                      <i class="icofont-wall-clock"></i>
+                      15–25 min</span>
+                    <span class="float-right text-black-50">
+                      $500 FOR TWO</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-danger">OFFER</span>
+                  <small>65% off | Use Coupon OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute">
+                  <span class="badge badge-success">
+                    <i class="icofont-star"></i>
+                    3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute">
+                  <a href="detail.html">
+                    <i class="icofont-heart"></i>
+                  </a>
+                </div>
+                <div class="member-plan position-absolute">
+                  <span class="badge badge-dark">Promoted</span></div>
+                <a href="detail.html">
+                  <img src="{% static 'img/list/8.png' %}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1">
+                    <a href="detail.html" class="text-black">Polo Lounge
+                    </a>
+                  </h6>
+                  <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                  <p class="text-gray mb-3 time">
+                    <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                      <i class="icofont-wall-clock"></i>
+                      15–25 min</span>
+                    <span class="float-right text-black-50">
+                      $250 FOR TWO</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-danger">OFFER</span>
+                  <small>65% off | Use Coupon OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute">
+                  <span class="badge badge-success">
+                    <i class="icofont-star"></i>
+                    3.1 (300+)</span></div>
+                <div class="favourite-heart text-danger position-absolute">
+                  <a href="detail.html">
+                    <i class="icofont-heart"></i>
+                  </a>
+                </div>
+                <div class="member-plan position-absolute">
+                  <span class="badge badge-dark">Promoted</span></div>
+                <a href="detail.html">
+                  <img src="{% static 'img/list/9.png' %}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1">
+                    <a href="detail.html" class="text-black">Jack Fry's
+                    </a>
+                  </h6>
+                  <p class="text-gray mb-3">North Indian • Indian • Pure veg</p>
+                  <p class="text-gray mb-3 time">
+                    <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">
+                      <i class="icofont-wall-clock"></i>
+                      15–25 min</span>
+                    <span class="float-right text-black-50">
+                      $250 FOR TWO</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-danger">OFFER</span>
+                  <small>65% off | Use Coupon OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pt-5 pb-5 bg-white becomemember-section border-bottom">
+  <div class="container">
+    <div class="section-header text-center white-text">
+      <h2>이거머거 가입하기</h2>
+      <p>가입시 프로필 사진제작권 증정</p>
+      <span class="line"></span>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <a href="register.html" class="btn btn-success btn-lg">
+          계정 만들기
+          <i class="fa fa-chevron-circle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pt-5 pb-5 text-center bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5 class="m-0">내 가게가 지도에 안나오나요?
+          <a href="login.html">등록하기</a>
+        </h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="footer pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-12 col-sm-12">
+        <h6 class="mb-3">Subscribe to our Newsletter</h6>
+        <form class="newsletter-form mb-1">
+          <div class="input-group">
+            <input type="text" placeholder="Please enter your email" class="form-control">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </form>
+        <p>
+          <a class="text-info" href="register.html">Register now</a>
+          to get updates on
+          <a href="offers.html">Offers and Coupons</a>
+        </p>
+        <div class="app">
+          <p class="mb-2">DOWNLOAD APP</p>
+          <a href="#">
+            <img class="img-fluid" src="{% static 'img/google.png' %}">
+          </a>
+          <a href="#">
+            <img class="img-fluid" src="{% static 'img/apple.png' %}">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-1 col-sm-6 mobile-none"></div>
+      <div class="col-md-2 col-6 col-sm-4">
+        <h6 class="mb-3">About OE</h6>
+        <ul>
+          <li>
+            <a href="#">About Us</a>
+          </li>
+          <li>
+            <a href="#">Culture</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li>
+            <a href="#">Careers</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-6 col-sm-4">
+        <h6 class="mb-3">For Foodies</h6>
+        <ul>
+          <li>
+            <a href="#">Community</a>
+          </li>
+          <li>
+            <a href="#">Developers</a>
+          </li>
+          <li>
+            <a href="#">Blogger Help</a>
+          </li>
+          <li>
+            <a href="#">Verified Users</a>
+          </li>
+          <li>
+            <a href="#">Code of Conduct</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 m-none col-4 col-sm-4">
+        <h6 class="mb-3">For Restaurants</h6>
+        <ul>
+          <li>
+            <a href="#">Advertise</a>
+          </li>
+          <li>
+            <a href="#">Add a Restaurant</a>
+          </li>
+          <li>
+            <a href="#">Claim your Listing</a>
+          </li>
+          <li>
+            <a href="#">For Businesses</a>
+          </li>
+          <li>
+            <a href="#">Owner Guidelines</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="pt-4 pb-4 text-center">
+  <div class="container">
+    <p class="mt-0 mb-0">© Copyright 2019 Food Line. All Rights Reserved</p>
+    <small class="mt-0 mb-0">
+      Made with
+      <i class="fas fa-heart heart-icon text-danger"></i>
+      by
+      <a class="text-danger" target="_blank" href="https://www.instagram.com/iamgurdeeposahan/">Gurdeep Osahan</a>
+      -
+      <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
+    </small>
+  </div>
+</footer>
+<!-- jQuery -->
+<script src="{% static 'vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Select2 JavaScript-->
+<script src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
+<!-- Owl Carousel -->
+<script src="{% static 'vendor/owl-carousel/owl.carousel.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4de947233d3ebafad418234317ec02e4&libraries=services"></script>
+
+<script>
+  $(".btn-primary").on("click", () => {
+    $(".category_list").toggleClass("show");
+  });
+
+  $(".category1").on("click", () => {
+    $(".menu_list1").toggleClass("show");
+  });
+  $(".category2").on("click", () => {
+    $(".menu_list2").toggleClass("show");
+  });
+  $(".category3").on("click", () => {
+    $(".menu_list3").toggleClass("show");
+  });
+  $(".category4").on("click", () => {
+    $(".menu_list4").toggleClass("show");
+  });
+  $(".category5").on("click", () => {
+    $(".menu_list5").toggleClass("show");
+  });
+  $(".category6").on("click", () => {
+    $(".menu_list6").toggleClass("show");
+  });
+  $(".category7").on("click", () => {
+    $(".menu_list7").toggleClass("show");
+  });
+  $(".category8").on("click", () => {
+    $(".menu_list8").toggleClass("show");
+  });
+
+  // 카카오 지도 api 시작
+  // 마커를 담을 배열입니다
+  var markers = [];
+
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+      center: new kakao
+        .maps
+        .LatLng(37.54515684, 127.05712205), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+    };
+
+  // 지도를 생성합니다
+  var map = new kakao
+    .maps
+    .Map(mapContainer, mapOption);
+
+  // 장소 검색 객체를 생성합니다
+  var ps = new kakao
+    .maps
+    .services
+    .Places();
+
+  // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+  var infowindow = new kakao
+    .maps
+    .InfoWindow({zIndex: 1});
+
+  // 키워드로 장소를 검색합니다
+  searchPlaces();
+
+  // 메뉴 고르면 검색창에 성수역 + 메뉴 보내기
+  $(".selected").on("click", function (e) {
+    e.preventDefault();
+    let selected_menu = $(this).html();
+    console.log("성수역 " + selected_menu);
+    $('#keyword').val("성수역 " + selected_menu);
+  });
+
+  // 키워드 검색을 요청하는 함수입니다
+  function searchPlaces() {
+    var keyword = document
+      .getElementById('keyword')
+      .value;
+
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    ps.keywordSearch(keyword, placesSearchCB);
+  }
+
+  // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+  function placesSearchCB(data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+
+      // 정상적으로 검색이 완료됐으면
+      // 검색 목록과 마커를 표출합니다
+      displayPlaces(data);
+
+      // 페이지 번호를 표출합니다
+      displayPagination(pagination);
+
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+      alert('검색 결과가 존재하지 않습니다.');
+      return;
+
+    } else if (status === kakao.maps.services.Status.ERROR) {
+
+      alert('검색 결과 중 오류가 발생했습니다.');
+      return;
+
+    }
+  }
+
+  // 검색 결과 목록과 마커를 표출하는 함수입니다
+  function displayPlaces(places) {
+
+    var listEl = document.getElementById('placesList'),
+      menuEl = document.getElementById('menu_wrap'),
+      fragment = document.createDocumentFragment(),
+      bounds = new kakao
+        .maps
+        .LatLngBounds(),
+      listStr = '';
+
+    // 검색 결과 목록에 추가된 항목들을 제거합니다
+    removeAllChildNods(listEl);
+
+    // 지도에 표시되고 있는 마커를 제거합니다
+    removeMarker();
+
+    for (var i = 0; i < 5; i++) {
+
+      // 마커를 생성하고 지도에 표시합니다
+      var placePosition = new kakao
+          .maps
+          .LatLng(places[i].y, places[i].x),
+        marker = addMarker(placePosition, i),
+        itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+      // LatLngBounds 객체에 좌표를 추가합니다
+      bounds.extend(placePosition);
+
+      // 마커와 검색결과 항목에 mouseover 했을때
+      // 해당 장소에 인포윈도우에 장소명을 표시합니다
+      // mouseout 했을 때는 인포윈도우를 닫습니다
+      (function (marker, title) {
+        kakao
+          .maps
+          .event
+          .addListener(marker, 'mouseover', function () {
+            displayInfowindow(marker, title);
+          });
+
+        kakao
+          .maps
+          .event
+          .addListener(marker, 'mouseout', function () {
+            infowindow.close();
+          });
+
+        itemEl.onmouseover = function () {
+          displayInfowindow(marker, title);
+        };
+
+        itemEl.onmouseout = function () {
+          infowindow.close();
+        };
+      })(marker, places[i].place_name);
+
+      fragment.appendChild(itemEl);
+    }
+
+    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    listEl.appendChild(fragment);
+    menuEl.scrollTop = 0;
+
+    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setBounds(bounds);
+  }
+
+  // 검색결과 항목을 Element로 반환하는 함수입니다
+  function getListItem(index, places) {
+
+    var el = document.createElement('li'),
+      itemStr = '<span class="markerbg marker_' + (
+      index + 1) + '"></span>' + '<div class="info">' + '   <h5>' + places.place_name + '</h5>';
+
+    if (places.road_address_name) {
+      itemStr += '    <span>' + places.road_address_name + '</span>' + '   <span class="jibun gray">' + places.address_name + '</span>';
+    } else {
+      itemStr += '    <span>' + places.address_name + '</span>';
+    }
+
+    itemStr += '  <span class="tel">' + places.phone + '</span>' + '</div>';
+
+    el.innerHTML = itemStr;
+    el.className = 'item';
+
+    return el;
+  }
+
+  // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+  function addMarker(position, idx, title) {
+    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      imageSize = new kakao
+        .maps
+        .Size(36, 37), // 마커 이미지의 크기
+      imgOptions = {
+        spriteSize: new kakao
+          .maps
+          .Size(36, 691), // 스프라이트 이미지의 크기
+        spriteOrigin: new kakao
+          .maps
+          .Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+        offset: new kakao
+          .maps
+          .Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+      },
+      markerImage = new kakao
+        .maps
+        .MarkerImage(imageSrc, imageSize, imgOptions),
+      marker = new kakao
+        .maps
+        .Marker({
+          position: position, // 마커의 위치
+          image: markerImage
+        });
+
+    marker.setMap(map); // 지도 위에 마커를 표출합니다
+    markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+    return marker;
+  }
+
+  // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+  function removeMarker() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
+  // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+  function displayPagination(pagination) {
+    var paginationEl = document.getElementById('pagination'),
+      fragment = document.createDocumentFragment(),
+      i;
+
+    // 기존에 추가된 페이지번호를 삭제합니다
+    while (paginationEl.hasChildNodes()) {
+      paginationEl.removeChild(paginationEl.lastChild);
+    }
+
+    for (i = 1; i <= pagination.last; i++) {
+      var el = document.createElement('a');
+      el.href = "#";
+      el.innerHTML = i;
+
+      if (i === pagination.current) {
+        el.className = 'on';
+      } else {
+        el.onclick = (function (i) {
+          return function () {
+            pagination.gotoPage(i);
+          }
+        })(i);
+      }
+
+      fragment.appendChild(el);
+    }
+    paginationEl.appendChild(fragment);
+  }
+
+  // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+  // 인포윈도우에 장소명을 표시합니다
+  function displayInfowindow(marker, title) {
+    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  }
+
+  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+  function removeAllChildNods(el) {
+    while (el.hasChildNodes()) {
+      el.removeChild(el.lastChild);
+    }
+  }
+</script>
+</body>
+
+</html>

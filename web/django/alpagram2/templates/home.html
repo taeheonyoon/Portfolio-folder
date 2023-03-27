@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+{% endblock style %}
+{% block contents %}
+  <div class="d-flex justify-content-center">
+    <div class="col-5 p-2">
+      <img src="{% static 'img/main.png' %}" alt="main" class="mx-auto d-block">
+    </div>
+    <div class="col-4 right-first">
+      <div class="row border mb-4 p-3 bg-white">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <a href="">
+                <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="" class="mx-auto d-block mt-5">
+              </a>
+            </div>
+          </div>
+          <div class="row px-3">
+            <div class="col">
+              <form action="{% url 'login' %}" method="post" class="mt-5 mb-3">
+                {% csrf_token %}
+                <div class="form-row mb-2">
+                  <div class="col">
+                    <input type="text" name="username" id="username" class="form-control form-control-sm" placeholder="사용자이름">
+                  </div>
+                </div>
+                <div class="form-row mb-2">
+                  <div class="col">
+                    <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="비밀번호">
+                  </div>
+                </div>
+                <div class="form-row mb-2">
+                  <div class="col">
+                    <input type="submit" class="btn btn-outline-primary btn-block form-control-sm" value="로그인">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row my-2 mx-4 cut-line">
+            <div class="col-5 px-0">
+              <hr>
+            </div>
+            <div class="col-2 px-2">
+              <p class="pt-2">또는</p>
+            </div>
+            <div class="col-5 px-0">
+              <hr>
+            </div>
+          </div>
+          <div class="row mb-3 px-3">
+            <div class="col text-center">구글로 로그인</div>
+          </div>
+          <div class="row mb-3 px-3">
+            <div class="col text-center">
+              <p class="small text-muted">비밀번호를 잊으셧나요?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border p-4 bg-white">
+        <div class="col text-center mx-4">
+          <span>계정이 없으신가요?<a href="" class="text-success register">가입하기</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!--로그인 화면 종료-->
+
+    <!--가입하기 클릭 시 보여줄 화면-->
+    <div class="col-4 p-4 right-second">
+      <div class="row border mb-2 bg-white">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <a href="">
+                <img src="" alt="" class="mx-auto d-block mt-5">
+              </a>
+            </div>
+          </div>
+          <div class="row mt-2 justify-content-center">
+            <div class="col-10 align-self-center">
+              <p class="text-center friends-info">
+                친구들의 사진과 동영상을 보려면 가입하세요
+              </p>
+            </div>
+          </div>
+          <div class="row my-2 mx-4 cut-line">
+            <div class="col-5 px-0">
+              <hr>
+            </div>
+            <div class="col-2 px-2">
+              <p class="pt-2">또는</p>
+            </div>
+            <div class="col-5 px-0">
+              <hr>
+            </div>
+          </div>
+          <form action="" method="post" id="register">
+            <div class="form-row mb-2">
+              <div class="col">
+                <input type="text" name="email" id="email" class="form-control form-control-sm" placeholder="이메일주소">
+              </div>
+            </div>
+            <div class="form-row mb-2">
+              <div class="col">
+                <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="비밀번호">
+              </div>
+            </div>
+            <div class="form-row mb-2">
+              <div class="col">
+                <input type="text" name="name" id="name" class="form-control form-control-sm" placeholder="이름">
+              </div>
+            </div>
+            <div class="form-row mb-2">
+              <div class="col">
+                <input type="text" name="nickname" id="nickname" class="form-control form-control-sm" placeholder="닉네임">
+              </div>
+            </div>
+            <div class="form-row mb-2">
+              <div class="col">
+                <input type="submit" class="btn btn-outline-primary btn-block form-control-sm" value="회원가입">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row border p-4 bg-white">
+        <div class="col text-center">
+          <span>계정이 있으신가요?<a href="" class="text-success login">로그인</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!--가입화면 종료-->
+  </div>
+{% endblock contents %}
+{% block script %}
+  <script>
+    // 회원가입 클릭 시 회원가입 하기 - ajax 방식
+    $("#register").on("submit", function (e) {
+      e.preventDefault();
+      // 폼에 있는 데이터 객체로 만들기
+      const form = document.querySelector("#register");
+      formData = new FormData(form);
+
+      $.ajax({
+        url: "{% url 'user_create' %}",
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log(response);
+          location.reload(); // http://127.0.0.1:8000/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+
+          if (req.responseJSON.error) {
+            $.each(req.responseJSON.message, function (name, error) {
+              error = "<small class='text-danger'>" + error + "</small>";
+              $(form)
+                .find("[name='" + name + "']")
+                .after(error);
+            })
+          }
+        }
+      })
+    })
+
+    // 클래스명 부착 방법 이용하지 않고 스크립트로만 구성
+    /*
+    $(".register").on("click", function (e) {
+      e.preventDefault();
+      $(".right-first").css("display", "none");
+      $(".right-second").css("display", "block");
+    })
+    $(".login").on("click", function (e) {
+      e.preventDefault();
+      $(".right-first").css("display", "block");
+      $(".right-second").css("display", "none");
+    })
+    */
+
+    // 클래스명 부착 방법
+    // jquery 방식
+    /*
+    $(".register").on("click", function (e) {
+      e.preventDefault();
+      $(".right-first").addClass("show");
+      $(".right-second").removeClass("show");
+    })
+    $(".login").on("click", function (e) {
+      e.preventDefault();
+      $(".right-first").removeClass("show");
+      $(".right-second").addClass("show");
+    })
+    */
+
+    // 자바스크립트 방식
+    document
+      .querySelector(".register")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); // a 태그 기능 중지
+        document
+          .querySelector(".right-first")
+          .style
+          .display = "none";
+        document
+          .querySelector(".right-second")
+          .style
+          .display = "block";
+      });
+
+    document
+      .querySelector(".login")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); // a 태그 기능 중지
+        document
+          .querySelector(".right-first")
+          .style
+          .display = "block";
+        document
+          .querySelector(".right-second")
+          .style
+          .display = "none";
+      });
+    // 가입하기 클릭 시 right-first 숨기기, right-second 보여주기
+    /*
+    document
+      .querySelector(".register")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); // a 태그 기능 중지
+        document
+          .querySelector(".right-first")
+          .classList
+          .add("show");
+        document
+          .querySelector(".right-second")
+          .classList
+          .remove("show");
+      });
+    // 로그인 클릭 시 right-first 보여주기, right-second 숨기기
+    document
+      .querySelector("login")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); // a 태그 기능 중지
+        document
+          .querySelector(".right-first")
+          .classList
+          .remove("show");
+        document
+          .querySelector(".right-second")
+          .classList
+          .add("show");
+      });
+      */
+  </script>
+{% endblock script %}

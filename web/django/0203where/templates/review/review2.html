@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+  <div class="container my-3">
+    <h5 class="border-bottom border-dark py-2">개의 댓글이 있습니다.</h5>
+
+    <div class="border-bottom row">
+      <div class="col-10 my-1" style="white-space: pre-line align-baseline">
+        <strong></strong>
+
+        <a href="#" class="delete btn btn-sm btn-outline-secondary mx-1" data-uri="">삭제</a>
+      </div>
+      <p class="col-2 my-3 badge bg-info text-dark  align-baseline"></p>
+    </div>
+
+    <form action="" method="post" class="my-3">
+      {% csrf_token %}
+
+      <div class="alert alert-danger" role="alert">
+
+        <div>
+          <strong></strong>
+
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="content" class="form-label">댓글내용</label>
+        <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+      </div>
+      <input type="submit" value="댓글등록" class="btn btn-primary"/>
+    </form>
+  </div>
+
+{% endblock contents %}
+{% block script %}
+  <script src="{% static 'widgets/rateit/jquery.rateit.min.js' %}"></script>
+  <script type="text/javascript">
+    const delete_elements = document.getElementsByClassName("delete");
+    Array
+      .from(delete_elements)
+      .forEach(function (element) {
+        element.addEventListener("click", function () {
+          if (confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+          }
+        });
+      });
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array
+      .from(recommend_elements)
+      .forEach(function (element) {
+        element.addEventListener("click", function () {
+          if (confirm("이 글을 추천하시겠습니까?")) {
+            location.href = this.dataset.uri;
+          }
+        });
+      });
+  </script>
+{% endblock script %}

@@ -1,0 +1,140 @@
+/* right-second 숨기기 */
+/* .right-second {
+  display: none;
+} */
+/* .show {
+  display: none;
+} */
+.right-second {
+  display: none;
+}
+
+body {
+  padding-top: 5rem;
+}
+
+.navbar {
+  width: 70%;
+}
+
+.card,
+.follow_list {
+  width: 30rem;
+}
+
+textarea.control {
+  display: block;
+  width: 21rem;
+  font-size: 0.8rem;
+  border: #fff;
+  outline-color: #fff;
+}
+
+textarea::placeholder {
+  vertical-align: middle;
+}
+
+.button {
+  border: none;
+  background-color: white;
+  color: #0095f6;
+  opacity: 0.4;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.right-second .friend-info {
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: #8d8f91;
+}
+
+.right-second .info {
+  font-size: 12px;
+  line-height: 16px;
+  color: #848587;
+}
+
+.right-second input::placeholder {
+  font-size: 13px;
+}
+
+.cut-line {
+  color: #848587;
+  font-size: 13px;
+}
+
+.top-menu span {
+  line-height: 1;
+}
+
+.top-menu .dropdown button {
+  border: none;
+  background-color: #fff;
+}
+
+.top-menu .dropdown button > img {
+  width: 30px;
+  height: 30px;
+}
+
+.top-menu [class~="d-print-inline"] {
+  font-size: 30px;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+}
+/* profile 이미지 */
+.profile-image {
+  width: 50px;
+  height: 50px;
+}
+
+/* profile 이미지 변경 */
+.profile_change {
+  width: 150px;
+  height: 150px;
+}
+
+/* search 작업 */
+.search-list {
+  display: none;
+  position: absolute;
+  width: 280px;
+  height: 250px;
+  top: 59px;
+  left: 40%;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.search-list > div {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+.search-list div img {
+  width: 40px;
+  height: 40px;
+}
+.search-list .col {
+  padding-left: 0;
+}
+/* 프로필 사진 업로드 custom*/
+.btn-upload {
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#file {
+  display: none;
+}

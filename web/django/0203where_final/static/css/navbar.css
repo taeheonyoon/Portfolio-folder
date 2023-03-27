@@ -1,0 +1,43 @@
+#what:hover{
+    background-color: yellow;
+    font-weight:bold;
+}
+#what:active{
+    color:black;
+}
+#what:focus{
+    color:black;
+}
+
+#searchResult li:hover{
+    background-color:skyblue;
+    font-weight:bold;
+    cursor:crosshair;
+}
+
+
+
+#searchResult li:active{
+    background-color:blue;
+    font-weight:bold;
+    color:red;
+   
+}
+
+.text_custom:focus{
+   
+    font-weight:bold;
+    
+}
+
+.section-header h1{
+    font-weight:bold;
+    font-size: large;
+}
+
+#btn_select:hover, #find_route:hover{
+    background-color:skyblue;
+}
+#btn_select:active, #find_route:active{
+    background-color:red;
+}

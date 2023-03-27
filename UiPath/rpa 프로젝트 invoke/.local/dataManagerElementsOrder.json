@@ -1,0 +1,526 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_System3URL&Flowchart_1",
+        "DT_AcountAmount&Flowchart_1",
+        "DT_TransactionInfo&Sequence_8",
+        "DT_ClientDetails&Flowchart_1",
+        "DT_ClientInfo&Flowchart_1",
+        "Dic_Config&Flowchart_1",
+        "Str_SiteURL&Flowchart_1",
+        "Str_ResultFilePath1&Flowchart_1",
+        "Str_WorkItemsURL&Flowchart_1",
+        "DT_WorkItems&Flowchart_1",
+        "DT_Result&Flowchart_1",
+        "Str_SourceData&Flowchart_1",
+        "Str_ConfigPath&Flowchart_1",
+        "Str_ResultFilePath2&Flowchart_1",
+        "DT_Final&Sequence_11",
+        "DT_B2_O2&Sequence_11",
+        "Str_MailPw&Sequence_13"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Str",
+        "in_Str_SiteURL",
+        "in_Str_WorkItemsURL",
+        "in_DT_Result",
+        "in_Str_SourceData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "000_Process_Common/ACME_Login.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ID&Sequence_1",
+        "Password&Sequence_1",
+        "Bln_IsLogoutBtn&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Dic_Config",
+        "in_Str_SiteURL"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "000_Process_Common/ACME_NavigateTo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "000_Process_Common/Read_Config.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_ConfigPath",
+        "out_Dic_Config",
+        "in_AryStr_ConfigSheets"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/201_ExtractWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/204_ExtractClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_Currency&Sequence_1",
+        "Str_AccountAmount&Sequence_1",
+        "Str_AccountNumber&Sequence_1",
+        "Str_ClientID&Sequence_1",
+        "Str_ClientInfo&Sequence_1",
+        "Str_WIID&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_DT_Result",
+        "in_Str_SiteURL",
+        "in_Str_WorkItemsURL",
+        "in_DT_WorkItems"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/101_SaveClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_ResultFilePath1",
+        "in_DT_Result"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/401_OpenSystem3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_ResultFilePath1",
+        "in_Str_System3"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/402_ExtractSystem3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/107_AmountMatchOrNot.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_ClientID&",
+        "Str_AccountNumber&",
+        "Str_WIID&",
+        "Str_Currency&",
+        "Str_AccountAmount&",
+        "Str_ClientDetails&",
+        "Str_AccountMovements&",
+        "DT_Resulttable&",
+        "DT_TransactionInfo&",
+        "Str_ExcelWIIDPath&",
+        "DT_ClientInfo&",
+        "DT_ClientDetails&",
+        "DT_AmountMatch&",
+        "Str_ClientName&",
+        "Str_ClientAddress&",
+        "Str_ClientCity&",
+        "Str_ClientCountry&"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_Dbl_M2",
+        "in_Str_SourceData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/103_AmountMatchOrNot.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/104_MakeFinalFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/205_TypingNewComment.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Int_Count&Sequence_1",
+        "DT_Result&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_DT_Result",
+        "in_Str_WorkItemsURL",
+        "in_Str_SiteURL",
+        "in_Str_SourceData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "300_Process_Mail/301_SendMail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ID&Sequence_1",
+        "Str_MailPw&Sequence_1",
+        "password&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Dic_Config",
+        "in_Str_ResultFilePath2"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/102_ExcelAmount.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/202_FilterWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/202_FilterWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/203_BuildDTResult.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/102_OpenDTResult.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_ResultFilePath1",
+        "in_DT_Result"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/102_OpenDTResult.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/402_LoginSystem3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ID&Sequence_1",
+        "Password&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Dic_Config",
+        "in_Str_SitePW"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/402_LoginSystem3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/403_NavigateClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/404_ClickClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/411_CloseSystem3.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/405_ExtractClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_Currency&Sequence_1",
+        "Str_AccountAmount&Sequence_1",
+        "Str_AccountNumber&Sequence_1",
+        "Str_ClientID&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_DTr_CurrentRow",
+        "out_DT_ClientInfo"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/407_ExtractClientDetail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_ClientDetails&Sequence_2",
+        "Str_ClientName&Sequence_2",
+        "Str_ClientAddress&Sequence_2",
+        "Str_ClientCity&Sequence_2",
+        "Str_ClientCountry&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_DT_ClientDetails",
+        "in_DT_Result"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/406_NavigateClientDetail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_ClientID&Sequence_1",
+        "Str_ClientID&Sequence_8",
+        "Str_ClientName&Sequence_2",
+        "Str_ClientAddress&Sequence_2",
+        "Str_ClientCity&Sequence_2",
+        "Str_ClientCountry&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_DTr_CurrentRow",
+        "in_DT_ClientInfo"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/406_ExtractWIID.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_ClientName&Sequence_2",
+        "Str_ClientAddress&Sequence_2",
+        "Str_ClientCity&Sequence_2",
+        "Str_ClientCountry&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/408_NavigateAcountMovements.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_DT_Result",
+        "in_DT_ClientInfo"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/408_NavigateAcountMovements.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/409_ExtractTransactionInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "DT_Resulttable&Sequence_1",
+        "Str_AccountMovements&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_DT_Result",
+        "out_DT_TransactionInfo"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/103_SaveClientInfos.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_WIID&Sequence_1",
+        "Str_ClientID&Sequence_1",
+        "DT_AmountMatch&Sequence_1",
+        "Str_ExcelWIIDPath&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_DTr_CurrentRow",
+        "in_DT_TransactionInfo",
+        "in_DT_ClientDetails",
+        "in_Str_SourceData",
+        "in_DT_ClientInfo"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "400_Process_System3/410_CloseClientInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_ClientName&Sequence_2",
+        "Str_ClientAddress&Sequence_2",
+        "Str_ClientCity&Sequence_2",
+        "Str_ClientCountry&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/104_ResetVariables.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Dbl_Sum&Sequence_1",
+        "Dbl_online&Sequence_1",
+        "Dbl_offline&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/105_FiterAndCalculateAmount.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Dbl_Sum&Sequence_1",
+        "Dbl_online&Sequence_1",
+        "Dbl_offline&Sequence_1",
+        "DT_online&Sequence_1",
+        "DT_offline&Sequence_1",
+        "DT_TransactionInfo&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_FilePath",
+        "out_DT_AcountAmount",
+        "in_Str_SourceData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/106_SaveAmount.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_FilePath",
+        "in_Str_SourceData",
+        "in_DT_AcountAmount"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/108_MakeDTFinal.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_SourceData",
+        "out_DT_Final"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/109_AddNumbering.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "100_Process_Excel/110_SaveFinalExcelFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_ResultFilePath2",
+        "in_DT_Final"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "200_Process_ACME/206_UpdateWorkItemsAndCloseTab.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Int_count&Sequence_2",
+        "variable2&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Str_FilePath",
+        "in_Str_SourceData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/lsit.css' %}">
+{% endblock style %}
+
+{% block contents %}
+  <h2>App1 - list</h2>
+  <img src="{% static 'img/cat1.jpg' %}" alt="">
+{% endblock contents %}
+
+{% block script %}
+  <script src="{% static 'js/list.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Clarence Taylor</span>
+      <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" "{% static 'img/drk10.png' %}" alt="..."/></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">게시판</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% include 'navbar.html' %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <h5 class="my-3 border-bottom pb-2">새글쓰기</h5>
+    <form method="post">
+      {% csrf_token %}
+      <!-- 오류표시 Start -->
+      {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+          {% for field in form %}
+            {% if field.errors %}
+              <div>
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      <!-- 오류표시 End -->
+      <div class="mb-3">
+        <label for="subject" class="form-label">제목</label>
+        <input type="text" class="form-control" name="subject" id="subject" value="{{ form.subject.value|default_if_none:'' }}"/>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+      </div>
+      {% if request.user.is_staff %}
+        <div class="form-check mb-1">
+          <input class="form-check-input" type="checkbox" name="notice"/>
+          공지글로 등록하기
+          <br/>
+        </div>
+      {% endif %}
+      <button type="submit" class="btn btn-primary my-1">[{{ category.description }}] 저장하기</button>
+    </form>
+  </div>
+{% endblock contents %}

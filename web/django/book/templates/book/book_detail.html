@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+      <label for="code">Code</label>
+      <input type="text" name="code" id="code" class="form-control" value="{{book_detail.code}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">title</label>
+      <input type="text" name="title" id="title" class="form-control" value="{{book_detail.title}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">author</label>
+      <input type="text" name="author" id="author" class="form-control" value="{{book_detail.author}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">price</label>
+      <input type="text" name="price" id="price" class="form-control" value="{{book_detail.price}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">register_dttm</label>
+      <input type="text" name="register_dttm" id="register_dttm" class="form-control" value="{{book_detail.register_dttm}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      {% if user.is_authenticated and user.is_superuser %}
+        <button type="submit" class="btn btn-success">수정</button>
+      {% endif %}
+      <button type="submit" class="btn btn-primary">리스트</button>
+    </div>
+  </form>
+{% endblock contents %}
+{% block script %}
+  <script>
+    //리스트 버튼 클릭시 전체 리스트 보기로 이동
+    document
+      .querySelector(".btn-primary")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); //submit 이벤트의 기본 동작을 막는다.
+        location.href = "{% url 'list' %}"
+      });
+    const update = document.querySelector(".btn-success")
+
+    // 자바스크립트에서 null 이면 false 로 인식함
+    if (update) {
+      update.addEventListener("click", (e) => {
+        e.preventDefault(); //submit 이벤트의 기본 동작을 막는다.
+        location.href = "{% url 'update' pk=book_detail.code %}"
+      });
+    }
+  </script>
+{% endblock script %}

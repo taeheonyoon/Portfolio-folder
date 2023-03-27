@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* image carousel */
+      .caruosel-wrapper {
+        overflow: hidden;
+      }
+      .caruosel {
+        width: 300vw;
+        transform: translateX(0);
+        transition: all 0.5s;
+      }
+      .slide-box {
+        width: 100vw;
+        height: 700px;
+        float: left;
+      }
+      .slide-box img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!--홈페이지 화면에 문제 띠우고 버튼 클릭시 정답 나오게하기-->
+    <div class="caruosel-wrapper">
+      <div class="caruosel">
+        <div class="slide-box">
+          <h1>page1</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea name="q1" id="q1" cols="30" rows="10">
+var nums = [100, 200, 300, 400, 500];
+                        nums.splice(3, 2);</textarea
+                >
+              </table>
+
+              <button type="button" class="b1" name="b1" id="b1">answer</button>
+              <button type="button" class="bb1">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div class="slide-box">
+          <h1>page2</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q2" cols="30" rows="10">
+                    var arr = [200, 100, 300];
+      arr.splice(2, 0, 10000);</textarea
+                >
+              </table>
+
+              <button type="button" class="b2">answer</button>
+              <button type="button" class="bb2">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div class="slide-box">
+          <h1>page3</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q3" cols="30" rows="10">
+var arr = [100, 200, 300];</textarea
+                >
+              </table>
+
+              <button type="button" class="b3">answer</button>
+              <button type="button" class="bb3">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div class="slide-box">
+          <h1>page4</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q4" cols="30" rows="10">
+                  console.log(typeof 1);
+                  console.log(typeof 2.22);
+                  console.log(typeof "p");
+                  console.log(typeof [1, 2, 3]);</textarea
+                >
+              </table>
+
+              <button type="button" class="b4">answer</button>
+              <button type="button" class="bb4">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div class="slide-box">
+          <h1>page5</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q5" cols="30" rows="10">
+                  var a = 10;
+      var b = 2;
+
+      for (var i = 1; i < 5; i += 2) {
+        a += i;
+      }
+
+      console.log(a + b);
+      </textarea
+                >
+              </table>
+
+              <button type="button" class="b5">answer</button>
+              <button type="button" class="bb5">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h1>page6</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q6" cols="30" rows="10">
+                  console.log(!!NaN);
+      console.log(!!1);
+      console.log(!!"");
+      console.log(!!0);
+      console.log(!!undefined);
+                </textarea>
+              </table>
+
+              <button type="button" class="b6">answer</button>
+              <button type="button" class="bb6">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h1>page7</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q7" cols="30" rows="10">
+                  //정답: 2, 3, 5
+                </textarea>
+              </table>
+
+              <button type="button" class="b7">answer</button>
+              <button type="button" class="bb7">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h1>page8</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q8" cols="30" rows="10">
+                  var d = {
+                    height: 180,
+                    weight: 78,
+                    weight: 84,
+                    temperature: 36,
+                    eyesight: 1,
+                  };
+            
+                  console.log(d["weight"]);
+                </textarea>
+              </table>
+
+              <button type="button" class="b8">answer</button>
+              <button type="button" class="bb8">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h1>page9</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q9" cols="30" rows="10">
+                var year = "2019";
+      var month = "04";
+      var day = "26";
+      var hour = "11";
+      var minute = "34";
+      var second = "27";
+
+      var result =
+        year +
+        "/" +
+        month +
+        "/" +
+        day +
+        " " +
+        hour +
+        ":" +
+        minute +
+        ":" +
+        second;
+
+      console.log(result);
+              </textarea
+                >
+              </table>
+
+              <button type="button" class="b9">answer</button>
+              <button type="button" class="bb9">돌아가기</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h1>page10</h1>
+          <form action="" method="get">
+            <div>
+              <table>
+                <textarea class="q10" cols="30" rows="10">
+                  var n = 5;
+                  var star2 = "";
+                  for (var i = 1; i <= n; i++) {
+                    for (var j = 1; j <= n - i; j++) {
+                      star += " ";
+                    }
+                    for (var k = 1; k <= 2 * i - 1; k++) {
+                      star += "*";
+                    }
+                    star += "\n";
+                  }
+                </textarea>
+              </table>
+
+              <button type="button" class="b10">answer</button>
+              <button type="button" class="bb10">돌아가기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <button class="prev btn btn-success" type="prev">prev</button>
+    <button class="next btn btn-primary" type="next">next</button>
+
+    <script>
+      // image carousel
+      // transform: translateX(?);
+      // 버튼 누를 떄마다 ? +- 100vw
+      const prev = document.querySelector(".prev");
+      const next = document.querySelector(".next");
+      const carousel = document.querySelector(".caruosel");
+
+      let index = 0;
+      next.addEventListener("click", () => {
+        if (index == 2) return;
+
+        index += 1;
+        carousel.style.transform = `translateX(-${100 * index}vw)`;
+      });
+      prev.addEventListener("click", () => {
+        if (index == 0) return;
+
+        index -= 1;
+        carousel.style.transform = `translateX(-${100 * index}vw)`;
+      });
+    </script>
+    <script>
+      //1번문제
+      const q1 = document.querySelector("#q1");
+      const b1 = document.querySelector("#b1");
+      const bb1 = document.querySelector(".bb1");
+      b1.addEventListener("click", () => {
+        q1.value = "100,200,300,500";
+      });
+      bb1.addEventListener("click", () => {
+        q1.value =
+          "var nums = [100, 200, 300, 400, 500]                nums.splice(3, 2);";
+      });
+    </script>
+    <script>
+      //2번문제
+      const q2 = document.querySelector(".q2");
+      const b2 = document.querySelector(".b2");
+      const bb2 = document.querySelector(".bb2");
+      b2.addEventListener("click", () => {
+        q2.value = "200,100,10000,300";
+      });
+      bb2.addEventListener("click", () => {
+        q2.value = "var arr = [200, 100, 300]      arr.splice(2, 0, 10000);";
+      });
+    </script>
+    <script>
+      //3번문제
+      const q3 = document.querySelector(".q3");
+      const b3 = document.querySelector(".b3");
+      const bb3 = document.querySelector(".bb3");
+      b3.addEventListener("click", () => {
+        q3.value = "100, 200, 300";
+      });
+      bb3.addEventListener("click", () => {
+        q3.value = "var arr = [200, 100, 300]      arr.splice(2, 1);";
+      });
+    </script>
+    <script>
+      //4번문제
+      const q4 = document.querySelector(".q4");
+      const b4 = document.querySelector(".b4");
+      const bb4 = document.querySelector(".bb4");
+      b4.addEventListener("click", () => {
+        q4.value = "number, number, string, object";
+      });
+      bb4.addEventListener("click", () => {
+        q4.value =
+          "console.log(typeof 1);                  console.log(typeof 2.22);                  console.log(typeof 'p');                  console.log(typeof [1, 2, 3]);";
+      });
+    </script>
+    <script>
+      //5번문제
+      const q5 = document.querySelector(".q5");
+      const b5 = document.querySelector(".b5");
+      const bb5 = document.querySelector(".bb5");
+      b5.addEventListener("click", () => {
+        q5.value = "16";
+      });
+      bb5.addEventListener("click", () => {
+        q5.value =
+          "var a = 10;      var b = 2;      for (var i = 1; i < 5; i += 2) {        a += i;      }      console.log(a + b);";
+      });
+    </script>
+    <script>
+      //6번문제
+      const q6 = document.querySelector(".q6");
+      const b6 = document.querySelector(".b6");
+      const bb6 = document.querySelector(".bb6");
+      b6.addEventListener("click", () => {
+        q6.value = "false, true, true, false, false";
+      });
+      bb6.addEventListener("click", () => {
+        q6.value =
+          "console.log(!!NaN);      console.log(!!1);      console.log(!!'');      console.log(!!0);      console.log(!!undefined);";
+      });
+    </script>
+    <script>
+      //7번문제
+      const q7 = document.querySelector(".q7");
+      const b7 = document.querySelector(".b7");
+      const bb7 = document.querySelector(".bb7");
+      b7.addEventListener("click", () => {
+        q7.value = "2, 3, 5";
+      });
+      bb7.addEventListener("click", () => {
+        q7.value =
+          "var arr = [200, 100, 300];      arr.splice(2, 0, 10000);      arr.splice(3, 1);      console.log(arr.indexOf(100), arr.indexOf(200), arr.indexOf(10000));";
+      });
+    </script>
+    <script>
+      //8번문제
+      const q8 = document.querySelector(".q8");
+      const b8 = document.querySelector(".b8");
+      const bb8 = document.querySelector(".bb8");
+      b8.addEventListener("click", () => {
+        q8.value = "1, 2, 3, 4, 5";
+      });
+      bb8.addEventListener("click", () => {
+        q8.value =
+          "var arr = [200, 100, 300];      arr.splice(2, 0, 10000);      arr.splice(3, 1);      console.log(arr.indexOf(100), arr.indexOf(200), arr.indexOf(10000));";
+      });
+    </script>
+    <script>
+      //9번문제
+      const q9 = document.querySelector(".q9");
+      const b9 = document.querySelector(".b9");
+      const bb9 = document.querySelector(".bb9");
+      b9.addEventListener("click", () => {
+        q9.value = "1, 2, 3, 4, 5";
+      });
+      bb9.addEventListener("click", () => {
+        q9.value =
+          "var arr = [200, 100, 300];      arr.splice(2, 0, 10000);      arr.splice(3, 1);      console.log(arr.indexOf(100), arr.indexOf(200), arr.indexOf(10000));";
+      });
+    </script>
+    <script>
+      //10번문제
+      const q10 = document.querySelector(".q10");
+      const b10 = document.querySelector(".b10");
+      const bb10 = document.querySelector(".bb10");
+      b10.addEventListener("click", () => {
+        q10.value = "1, 2, 3, 4, 5";
+      });
+      bb10.addEventListener("click", () => {
+        q10.value =
+          "var arr = [200, 100, 300];      arr.splice(2, 0, 10000);      arr.splice(3, 1);      console.log(arr.indexOf(100), arr.indexOf(200), arr.indexOf(10000));";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Clarence Taylor</span>
+    <span class="d-none d-lg-block"><img src="{% static 'img/로그인.png' %}" style="width: 150px; height: 150px" alt="..."/></span>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex align-items-center" id="navbarResponsive">
+    {% if request.user.is_authenticated %}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{% url 'profile_edit' %}">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{% url 'inbox' %}">DM BOX</a>
+        </li>
+      </ul>
+    {% else %}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">LOGIN</a>
+        <li>
+          <hr class="dropdown-divider"/>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{% url 'register' %}">SIGNUP</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider"/>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{% url 'password_reset' %}">PASSWORD RESET</a>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+</nav>

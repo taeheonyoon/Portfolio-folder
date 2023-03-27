@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="roe mt-5">
+    <div class="col-12 text-center">
+      <h1>Home</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    {% comment %}{% if user.is_authenticated %}{% endcomment %}
+      <div class="col-4">
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary btn-block">로그아웃</a>
+      </div>
+    {% comment %}{% else %}{% endcomment %}
+      <div class="col-4">
+        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-block">로그인</a>
+      </div>
+      <div class="col-4">
+        <a href="{% url 'register' %}" class="btn btn-outline-primary btn-block">회원가입</a>
+      </div>
+    {% comment %}{% endif %}{% endcomment %}
+    <div class="col-4">
+      <a href="{% url 'board_list' %}" class="btn btn-outline-primary btn-block">게시판</a>
+    </div>
+  </div>
+{% endblock contents %}

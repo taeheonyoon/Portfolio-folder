@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="container">
+    {% include 'form_errors.html' %}
+    <div class="row">
+      <div class="col-12">
+        <h3 class="border-bottom pb-2">
+          {{post.title}}
+        </h3>
+      </div>
+      <div class="col-12">
+        <!--이미지-->
+        {% if post.image %}
+          <img src="{{post.image.url}}" alt="" class="mx-auto d-block">
+        {% endif %}
+      </div>
+      <div class="col-12">
+        <!--본문-->
+        <p>{{post.content}}</p>
+      </div>
+    </div>
+    <!--// 내용보기 종료-->
+
+    <!--// 댓글 목록-->
+    <div class="card mb-3">
+      <div class="card-header comment-header">
+        <i class="fas fa-comments"></i>
+        <span class="small">Comments</span>
+      </div>
+      <!-- 댓글이 존재한다면 -->
+      {% if post.comment_set.count > 0 %}
+        {% for comment in post.comment_set.all %}
+          <div class="card-body">
+            <div class="card-title">{{comment.content}}</div>
+            <div class="d-flex justify-content-end p-2 comment bg-light">
+              <div>{{comment.user.email}}</div>
+              <div>
+                ({{comment.created_at}})</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!--댓글 등록-->
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <textarea name="content" id="content" rows="7" class="form-control"></textarea>
+      </div>
+      <div class="form-group my-3">
+        <button class="btn btn-primary" type="submit">댓글작성</button>
+      </div>
+      <input type="hidden" name="post_id" value="{{post.pk}}">
+    </form>
+
+  </div>
+{% endblock contents %}

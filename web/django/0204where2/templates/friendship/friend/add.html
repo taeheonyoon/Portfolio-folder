@@ -1,0 +1,10 @@
+{% if not to_name == request.user.name %}
+  {% if errors %}
+    <p>{{ errors|join:", " }}</p>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="to_name" value="{{ to_name }}"/>
+    <input type="submit" value="add {{ to_name }} as a friend"/>
+  </form>
+{% endif %}

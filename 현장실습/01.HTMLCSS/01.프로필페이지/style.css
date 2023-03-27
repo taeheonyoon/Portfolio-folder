@@ -1,0 +1,26 @@
+body {text-align: center;} <!-- body 태그의 텍스트를 가운데 정렬 -->
+h1 {color:steelblue;}
+p {font-size: 24px;}
+ul {
+    list-style:none;
+    padding 0;
+    display: flex;
+    justify-content: center;
+} <!-- ul 별명 지어주는 태그의 리스트를 가운데 정렬 -->
+ul > li{
+    padding: 0 10px;
+}
+.link {
+    text-decoration: none;
+    color: orange;
+} <!-- a 태그의 링크를 오렌지색으로 지정 -->
+table {margin: 0 auto;} <!-- table 태그의 테이블을 가운데 정렬 -->
+td {
+    padding: 5px;
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+} <!-- td 태그의 테이블의 테두리를 둥글게 지정 -->
+img {
+    border-radius: 50%;
+}   <!-- img 태그의 이미지를 둥글게 지정 -->

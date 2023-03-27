@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.rap {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_title {
+    padding: 5rem 0;
+}
+
+/* 메인 설명 */
+
+.main_info {
+    margin-bottom: 3rem;
+}
+
+.main_info > div {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.main_info > div > div {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+}
+
+/* 게임판 */
+
+.panel_list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+}
+
+.panel_item {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.panel_item > div {
+    font-size: 8rem;
+    font-weight: bold;
+}
+
+.player_1 > div {
+    color: #dd1e33;
+}
+
+.player_2 > div {
+    color: #217af4;
+}
+
+.panel_item.noSelect {
+    pointer-events: none;
+    user-select: none;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 33;
+    transition: 0.5s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.modal > h2 {
+    font-size: 3rem;
+    color: #fff;
+    user-select: none;
+}
+
+.open {
+    pointer-events: initial;
+    opacity: 1;
+}

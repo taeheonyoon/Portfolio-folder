@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <!--폼안의 내용을 views.py 안의 send_email 함수에 가져오기-->
+  <form method="POST" action="{% url 'pay:send_email' %}">
+    {% csrf_token %}
+    <div>
+      <div>
+        <label for="total_money">전체금액</label>
+        <input type="number" name="total_money" id="total_money"/>
+      </div>
+      <div>
+        <label for="total_people">총인원</label>
+        <input type="number" name="total_people" id="total_people"/>
+      </div>
+      <div>
+        <label for="deposit_account">계좌번호</label>
+        <input type="text" name="deposit_account" id="deposit_account"/>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary go">go</button>
+      </div>
+      <div>
+        <label for="t_bilge">계좌번호</label>
+        <input type="textarea" name="t_bilge" id="t_bilge" placeholder="#result" size="40">
+      </div>
+      <div>
+        <label for="t_name">계좌번호</label>
+        <input type="text" name="t_name" id="t_name" placeholder="#id">
+        <button type="submit" class="btn btn-primary" id="btn_send">메일로 보내기</button>
+      </div>
+    </div>
+  </form>
+
+{% endblock contents %}
+{% block script %}
+  <script>
+    document
+      .querySelector(".go")
+      .addEventListener("click", function () {
+        var total_money = document.querySelector("#total_money");
+        var total_people = document.querySelector("#total_people");
+        var deposit_account = document.querySelector("#deposit_account");
+        var ceil_unit = 500;
+        var x = Math.ceil(parseInt(total_money.value) / parseInt(total_people.value) / ceil_unit) * ceil_unit;
+        var y = x * total_people.value - total_money.value;
+
+        var bilge = document
+          .querySelector("#t_bilge")
+          .value = "한사람당 " + x + "원, " + deposit_account.value + " 로 송금, " + y + "원 뽀찌.";
+
+      });
+  </script>
+
+{% endblock script %}

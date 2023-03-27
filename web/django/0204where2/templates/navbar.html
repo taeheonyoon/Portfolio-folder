@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand bg-body-tertiary nav-tab fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index:index' %}" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" id="what">WHERE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'eat:explore_menu' %}" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">WHAT TO EAT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'drink:explore_menu' %}" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">WHAT TO DRINK</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'play:explore_menu' %}" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">WHAT TO DO</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            WHO PAY
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'pay:roulette' %}" id="what">룰렛</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'pay:tic' %}" id="what">틱택토</a>
+            </li>
+            <li>
+              <hr class="dropdown-divider"/>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'pay:dutchpay' %}" id="what">더치페이 계산</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            BOARD
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'review:storelist' %}" id="what">평점게시판</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'board:index' %}" id="what">커뮤니티</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{user.name}}님 접속중
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{% url 'profile_edit' %}">프로필</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'inbox' %}">DM</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'friendship:friendship_view_friends' user.name %}">내 친구</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider"/>
+              </li>
+              <li>
+                <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">로그아웃</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider"/>
+              </li>
+              <li>
+                <a class="dropdown-item" aria-current="page" href="{% url 'user_delete' %}">회원탈퇴</a>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'register' %}" id="what" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">SIGN UP</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

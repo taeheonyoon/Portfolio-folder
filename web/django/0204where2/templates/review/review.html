@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'widgets/rateit/rateit.css' %}">
+
+{% endblock %}
+{% block contents %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Clarence Taylor</span>
+      <span class="d-none d-lg-block"><img src="{{ store.photo.url }}" style="width: 150px; height: 150px" alt="..."/></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">{{ store.name }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#education">{{ store.category }}</a>
+        </li>
+        <br>
+        <br>
+        <br>
+        <li class="nav-item">
+          <a href="{% url 'review:storelist' %}" class="btn btn-success">목록으로 돌아가기</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+  <h5 class=" border-bottom border-dark py-2">{{store.review_set.count}}개의 리뷰가 있습니다.</h5>
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">별점</th>
+        <th scope="col">리뷰사진</th>
+        <th scope="col">한줄평</th>
+        <th scope="col">리뷰유져</th>
+        <th scope="col">등록시간</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for review in store.review_set.all %}
+        <tr>
+          <th>{{forloop.counter}}</th>
+          <td>{{ review.grade }}
+            / 5</td>
+          <td>
+            {% if review.photo %}
+              <img style="width: 50px; height: 50px;" src="{{ review.photo.url }}" alt="">
+            {% endif %}
+          </td>
+          <td>{{ review.content }}</td>
+          <td>{{ review.user.name }}</td>
+          <td>{{ review.created_at }}</td>
+          <td>
+            {% if user == review.user %}
+              <form action="" method="POST" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" value="DELETE">
+              </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+  <br>
+  <br>
+  <h3>리뷰 등록</h3>
+  <!--create-->
+  <div>
+    {% if request.user.is_authenticated %}
+
+      <form action="{% url 'review:comments_create' store.pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info">등록</button>
+      </form>
+
+    {% else %}
+      <a href="{% url 'login' %}">[댓글을 작성하려면 로그인하세요.]</a>
+    {% endif %}
+
+  </div>
+  <br>
+  <br>
+  <br>
+
+{% endblock contents %}
+
+{% block script %}
+  <script src="{% static 'widgets/rateit/jquery.rateit.min.js' %} "></script>
+{% endblock script %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>instrument</th>
+      <th>함수형 뷰</th>
+      <th>클래스 뷰</th>
+    </tr>
+    <!-- musician 반복될 부분 forloop.counter0 : 루프 반복시 0부터 시작, forloop.counter : 루프 반복시 1부터 시작 -->
+    {% for musician in list %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{musician.first_name}}</td>
+        <!-- first_name -->
+
+        <td>{{musician.last_name}}</td>
+        <!-- last_name -->
+        <td>{{musician.instrument}}</td>
+        <!-- instrument -->
+
+        <td>
+          <a href="{% url 'musician_function_detail' pk=musician.pk %}" class="btn btn-outline-info">보기</a>
+          <a href="{% url 'musician_function_edit' pk=musician.pk %}" class="btn btn-outline-success">수정</a>
+          <a href="{% url 'musician_function_remove' pk=musician.pk %}" class="btn btn-outline-danger">삭제</a>
+        </td>
+        <td>
+          <a href="{% url 'musician_class_detail' pk=musician.pk %}" class="btn btn-outline-info">보기</a>
+          <a href="{% url 'musician_class_edit' pk=musician.pk %}" class="btn btn-outline-success">수정</a>
+          <a href="{% url 'musician_class_remove' pk=musician.pk %}" class="btn btn-outline-danger">삭제</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock contents %}

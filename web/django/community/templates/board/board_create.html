@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="row">
+    <h1 class="pb-3 boarder-bottom">Register</h1>
+  </div>
+  <div class="row mt-5">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group mb-2">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" name="title" id="title" class="form-control" value="{{form.title.value|default_if_none:''}}">
+      </div>
+      <div class="form-group mb-2">
+        <label for="contents" class="form-label">내용</label>
+        <textarea name="contents" id="contents" rows="10" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label for="tags" class="form-label">태그</label>
+      <input type="text" name="tags" id="tags" class="form-control" value="{{form.tags.value|default_if_none:''}}">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">등록</button>
+    </div>
+  </form>
+</div>
+{% endblock contents %}

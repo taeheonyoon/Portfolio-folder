@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load users_tags %}
+{% load static %}
+{% block contents %}
+  {% include 'users_sidebar.html' %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
+          <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+            <div class="py-4 px-3 border-bottom">
+              <a href="#imageModal" data-bs-toggle="modal" data-bs-target="#imageModal">
+                <img src="{{user.profile.image.url}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image" title="프로필 사진 변경">
+              </a>
+              <h5 class="font-weight-bold text-dark mb-1 mt-4">{{user.name}}님</h5>
+            </div>
+            <div class="d-flex">
+              <div class="col-6 border-right p-3">
+                <h6 class="font-weight-bold text-dark mb-1">{% count_post user.id %}</h6>
+                <p class="mb-0 text-black-50 small">내가 쓴 글</p>
+              </div>
+              <div class="col-6 p-3">
+                <h6 class="font-weight-bold text-dark mb-1">{% count_review user.id %}</h6>
+                <p class="mb-0 text-black-50 small">내가 쓴 리뷰</p>
+              </div>
+            </div>
+            <div class="overflow-hidden border-top">
+              <a class="font-weight-bold p-3 d-block" href="{% url 'logout' %}">
+                Log Out
+              </a>
+            </div>
+          </div>
+          {% include 'users/profile_modal.html' %}
+
+        </aside>
+        <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">내 최신 글</h6>
+            </div>
+            {% recent_post 3 user.id as posts %}
+            {% for p in posts %}
+              <div class="d-flex text-muted pt-3">
+                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#849B38"/>
+                  <text x="50%" y="50%" fill="#849B38" dy=".3em">32x32</text>
+                </svg>
+                <p class="pb-3 mb-0 small lh-sm border-bottom">
+                  <strong class="d-block text-gray-dark">
+                    <a href="{% url 'board:detail' p.id %}">{{ p.subject }}</a>
+                  </strong>
+                  {{p.content|truncatechars:25}}
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">내 최신 리뷰</h6>
+            </div>
+            {% recent_review 3 user.id as reviews %}
+            {% for review in reviews %}
+              <div class="d-flex text-muted pt-3">
+                <a href="">
+                  {% if review.photo %}
+                    <img style="width: 32px; height: 32px;" src="{{ review.photo.url }}" alt="">
+                  {% else %}
+                    <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#849B38"/>
+                      <text x="50%" y="50%" fill="#849B38" dy=".3em">32x32</text>
+                    </svg>
+                  {% endif %}
+                </a>
+                <strong class="pb-3 mb-0 small lh-sm border-bottom d-block text-gray-dark">
+                  <a href="{% url 'review:review' review.store.id %}">&nbsp;{{review.content|truncatechars:25}}</a>
+                </strong>
+              </div>
+            {% endfor %}
+          </div>
+
+        </main>
+        <aside class="col col-xl-3 order-xl-3 col-lg-12 order-lg-3 col-12">
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">{{user.name}}님의 친구 목록입니다.</h6>
+            </div>
+            <div class="box-body p-3">
+              {% friendlist user.id as friendlist %}
+              {% for friend in friendlist %}
+                <div>{{ friend.name }}
+                  <span class="ml-auto">
+                    <button type="button" class="btn btn-light btn-sm">
+                      <a href="{% url 'newconversation' friend.name %}">메세지 보내기</a>
+                    </button>
+                  </span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden">
+            <div class="p-3 border-bottom">
+              <span class="ml-auto">
+                <button type="button" class="btn btn-light btn-sm">
+                  <a href="{% url 'friendship:search_friends' %}">친구추가</a>
+                </button>
+              </span>
+            </div>
+
+            <div class="box shadow-sm mb-3 rounded bg-white ads-box text-center overflow-hidden">
+
+              <div id="link_nav">
+                {{ user.name }}
+                님의
+                <a href="">친구 요청 목록</a>
+                {% friend_requests user.id as friend_requests %}
+                <ul>
+                  {% for friend_request in friend_requests %}
+                    <li>{{friend_request.from_user.name}}님의 친구요청
+                      <a href="{% url 'friendship:friendship_requests_detail' friend_request_user.id %}">보기</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    //현재사진삭제 클릭이 되면 a 태그 기능 중지
+    //ajax로 요청 보내기 "{% url 'user_profile_delete' %}"
+
+    $(".delete").on("click", function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        url: "{% url 'user_profile_delete' %}",
+
+        success: function (response) {
+          console.log(response);
+          location.reload();
+          //http : 127.0.0.1:8000/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+
+    //프로필 사진 변경 클릭 되면 사용자가 변경할 이미지를 선택
+    //사용자가 선택한 이미지를 서버로 전송(ajax)
+
+    $("#file").on("change", function (e) {
+
+      const form = document.querySelector("#image_change");
+
+      formData = new FormData(form);
+
+      $.ajax({
+        url: "{% url 'user_profile_update' %}", ///http://127.0.0.1:8000/users/profile/update/
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          console.log(response);
+          location.reload(); //http://127.0.0.1:8000/users/profile/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+  </script>
+  <script>
+    //친구 요청 목록 클릭시 친구 요청 목록 보여주기
+  </script>
+{% endblock script %}

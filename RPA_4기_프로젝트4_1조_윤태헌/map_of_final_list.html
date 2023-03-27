@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_366af968d63e6e624017bea0b249a3a2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    
+            <style>
+                #scroll_zoom_toggler_fe464161bc103438ee171a819ebb6eca {
+                    position:absolute;
+                    width:35px;
+                    bottom:10px;
+                    height:35px;
+                    left:10px;
+                    background-color:#fff;
+                    text-align:center;
+                    line-height:35px;
+                    vertical-align: middle;
+                    }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_366af968d63e6e624017bea0b249a3a2" ></div>
+        
+    
+            <img id="scroll_zoom_toggler_fe464161bc103438ee171a819ebb6eca"
+                 alt="scroll"
+                 src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/png/512/arrow-move.png"
+                 style="z-index: 999999"
+                 onclick="map_366af968d63e6e624017bea0b249a3a2.toggleScroll()">
+            </img>
+        
+</body>
+<script>
+    
+    
+            var map_366af968d63e6e624017bea0b249a3a2 = L.map(
+                "map_366af968d63e6e624017bea0b249a3a2",
+                {
+                    center: [37.4363177, 127.550802],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_470ae9094cb3cd3917914561250fc8c8 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+            var marker_bb9da84f1986f88dd952f3a29af444e7 = L.marker(
+                [38.1349255, 127.019287],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_980350afd435413b31ee4864d505a06b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4892b3e1fe970266066b6857718647e9 = $(`<div id="html_4892b3e1fe970266066b6857718647e9" style="width: 100.0%; height: 100.0%;">DMZ 마루캠핑</div>`)[0];
+                popup_980350afd435413b31ee4864d505a06b.setContent(html_4892b3e1fe970266066b6857718647e9);
+            
+        
+
+        marker_bb9da84f1986f88dd952f3a29af444e7.bindPopup(popup_980350afd435413b31ee4864d505a06b)
+        ;
+
+        
+    
+    
+            var marker_4b3c2a0cbad3ebd99de45ae4a29ee852 = L.marker(
+                [37.8879007, 127.538741],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_f1febedf69cbefafba7ac830f490d895 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c0c7143089ded57ae4e7b1736ad5f2cd = $(`<div id="html_c0c7143089ded57ae4e7b1736ad5f2cd" style="width: 100.0%; height: 100.0%;">구름계곡캠핑장</div>`)[0];
+                popup_f1febedf69cbefafba7ac830f490d895.setContent(html_c0c7143089ded57ae4e7b1736ad5f2cd);
+            
+        
+
+        marker_4b3c2a0cbad3ebd99de45ae4a29ee852.bindPopup(popup_f1febedf69cbefafba7ac830f490d895)
+        ;
+
+        
+    
+    
+            var marker_aee1b29ffd5551d8a1a2fc69f44805c1 = L.marker(
+                [36.9586597, 127.362415],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_577377676a5e145b7b8dc60c16e88a48 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4153e5bf3a1798813ffc13648a9f0195 = $(`<div id="html_4153e5bf3a1798813ffc13648a9f0195" style="width: 100.0%; height: 100.0%;">금광관광농원 캠핑장</div>`)[0];
+                popup_577377676a5e145b7b8dc60c16e88a48.setContent(html_4153e5bf3a1798813ffc13648a9f0195);
+            
+        
+
+        marker_aee1b29ffd5551d8a1a2fc69f44805c1.bindPopup(popup_577377676a5e145b7b8dc60c16e88a48)
+        ;
+
+        
+    
+    
+            var marker_bf39146aeb485de73888220b032a6e14 = L.marker(
+                [37.7542993, 127.412328],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_202c542ef637c136fb05930b6e5581b9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cad0bb837e93cdd026338e6d185f95d0 = $(`<div id="html_cad0bb837e93cdd026338e6d185f95d0" style="width: 100.0%; height: 100.0%;">산장관광지</div>`)[0];
+                popup_202c542ef637c136fb05930b6e5581b9.setContent(html_cad0bb837e93cdd026338e6d185f95d0);
+            
+        
+
+        marker_bf39146aeb485de73888220b032a6e14.bindPopup(popup_202c542ef637c136fb05930b6e5581b9)
+        ;
+
+        
+    
+    
+            var marker_982e7fb2ecffeed3e1358885e583c934 = L.marker(
+                [37.5414233, 127.4689533],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_c3767a977c2372082f68f3926d849c10 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5fc3dec9c035fce930eb58aa4837f608 = $(`<div id="html_5fc3dec9c035fce930eb58aa4837f608" style="width: 100.0%; height: 100.0%;">솔뜰 캠핑장</div>`)[0];
+                popup_c3767a977c2372082f68f3926d849c10.setContent(html_5fc3dec9c035fce930eb58aa4837f608);
+            
+        
+
+        marker_982e7fb2ecffeed3e1358885e583c934.bindPopup(popup_c3767a977c2372082f68f3926d849c10)
+        ;
+
+        
+    
+    
+            var marker_d1d38958b5c35d14ad779b037cc293e0 = L.marker(
+                [38.074565, 127.0072391],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_474bffbdcd984238b59af0c1b148d112 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_21fc27dcde30a2a1f7bcaee49f945f10 = $(`<div id="html_21fc27dcde30a2a1f7bcaee49f945f10" style="width: 100.0%; height: 100.0%;">알멕스랜드캠핑장</div>`)[0];
+                popup_474bffbdcd984238b59af0c1b148d112.setContent(html_21fc27dcde30a2a1f7bcaee49f945f10);
+            
+        
+
+        marker_d1d38958b5c35d14ad779b037cc293e0.bindPopup(popup_474bffbdcd984238b59af0c1b148d112)
+        ;
+
+        
+    
+    
+            var marker_bfb951715ce0127f4acaef51658d7f2c = L.marker(
+                [37.5636853, 127.7325533],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_6e33c6ba656de5b0308d2fe81036f5f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f7860fab8f488faaaea67d97827f072 = $(`<div id="html_1f7860fab8f488faaaea67d97827f072" style="width: 100.0%; height: 100.0%;">맑은숲캠프</div>`)[0];
+                popup_6e33c6ba656de5b0308d2fe81036f5f1.setContent(html_1f7860fab8f488faaaea67d97827f072);
+            
+        
+
+        marker_bfb951715ce0127f4acaef51658d7f2c.bindPopup(popup_6e33c6ba656de5b0308d2fe81036f5f1)
+        ;
+
+        
+    
+    
+            var marker_4c9a4f083f663295a686a360a0b31b2f = L.marker(
+                [37.8848024, 126.8350089],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_73d4dc60faf0c129552e463ba30ca4eb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_758ca92799a634125794e021eb128fc5 = $(`<div id="html_758ca92799a634125794e021eb128fc5" style="width: 100.0%; height: 100.0%;">지내울 야영장</div>`)[0];
+                popup_73d4dc60faf0c129552e463ba30ca4eb.setContent(html_758ca92799a634125794e021eb128fc5);
+            
+        
+
+        marker_4c9a4f083f663295a686a360a0b31b2f.bindPopup(popup_73d4dc60faf0c129552e463ba30ca4eb)
+        ;
+
+        
+    
+    
+            var marker_3a25631fbe8ef52f6fa44f9efd9f1dc7 = L.marker(
+                [37.7510277, 127.3662988],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_ce0e1216e4ac6f790c5d1a0a3992f3ba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8395cefac4d406bfc1fe5cafcd3c6c9b = $(`<div id="html_8395cefac4d406bfc1fe5cafcd3c6c9b" style="width: 100.0%; height: 100.0%;">캠프수풀이</div>`)[0];
+                popup_ce0e1216e4ac6f790c5d1a0a3992f3ba.setContent(html_8395cefac4d406bfc1fe5cafcd3c6c9b);
+            
+        
+
+        marker_3a25631fbe8ef52f6fa44f9efd9f1dc7.bindPopup(popup_ce0e1216e4ac6f790c5d1a0a3992f3ba)
+        ;
+
+        
+    
+    
+            var marker_8cf224fcc45eb7c931200ea454548e9b = L.marker(
+                [37.958895, 127.5270861],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_d8078317218aa67cded39b89869d6120 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_356c978b0102a2ca6bceacbebda125ed = $(`<div id="html_356c978b0102a2ca6bceacbebda125ed" style="width: 100.0%; height: 100.0%;">코끼리캠핑장</div>`)[0];
+                popup_d8078317218aa67cded39b89869d6120.setContent(html_356c978b0102a2ca6bceacbebda125ed);
+            
+        
+
+        marker_8cf224fcc45eb7c931200ea454548e9b.bindPopup(popup_d8078317218aa67cded39b89869d6120)
+        ;
+
+        
+    
+    
+            var marker_d22b1d9cb27597c2203fbf0ff3acfc20 = L.marker(
+                [37.6633637, 126.7392536],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_1ca4e0720515d67e2943542865f4f21f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_94cb4220cf8b06c9b44bd71718eccfe7 = $(`<div id="html_94cb4220cf8b06c9b44bd71718eccfe7" style="width: 100.0%; height: 100.0%;">킨텍스캠핑장</div>`)[0];
+                popup_1ca4e0720515d67e2943542865f4f21f.setContent(html_94cb4220cf8b06c9b44bd71718eccfe7);
+            
+        
+
+        marker_d22b1d9cb27597c2203fbf0ff3acfc20.bindPopup(popup_1ca4e0720515d67e2943542865f4f21f)
+        ;
+
+        
+    
+    
+            var marker_ee4fa98ae16e23507abed5c116e6e2d9 = L.marker(
+                [37.5970408, 127.494631],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_4aad27fb670bbf1e7f433bab5a64e00a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d3c4b45232a023c5dd460a217bc4b00 = $(`<div id="html_0d3c4b45232a023c5dd460a217bc4b00" style="width: 100.0%; height: 100.0%;">푸른숲캠핑장</div>`)[0];
+                popup_4aad27fb670bbf1e7f433bab5a64e00a.setContent(html_0d3c4b45232a023c5dd460a217bc4b00);
+            
+        
+
+        marker_ee4fa98ae16e23507abed5c116e6e2d9.bindPopup(popup_4aad27fb670bbf1e7f433bab5a64e00a)
+        ;
+
+        
+    
+    
+            var marker_6cace4a8ade5c908c450d7fc786a527e = L.marker(
+                [37.7557045, 126.9091064],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_6bdeb9ba836347a84adba38febe9775b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9bed287d9a64dbbb7b816e19f412764d = $(`<div id="html_9bed287d9a64dbbb7b816e19f412764d" style="width: 100.0%; height: 100.0%;">플레이랜드 캠핑장</div>`)[0];
+                popup_6bdeb9ba836347a84adba38febe9775b.setContent(html_9bed287d9a64dbbb7b816e19f412764d);
+            
+        
+
+        marker_6cace4a8ade5c908c450d7fc786a527e.bindPopup(popup_6bdeb9ba836347a84adba38febe9775b)
+        ;
+
+        
+    
+    
+            var marker_39922ee7dd49de929bf2f45e5e00ecab = L.marker(
+                [37.8985272, 127.1179512],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_419e74484fa7ea7764c7a077a4b55452 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4741733fd0160d05cd5ce337f34beac8 = $(`<div id="html_4741733fd0160d05cd5ce337f34beac8" style="width: 100.0%; height: 100.0%;">벨라캠핑장</div>`)[0];
+                popup_419e74484fa7ea7764c7a077a4b55452.setContent(html_4741733fd0160d05cd5ce337f34beac8);
+            
+        
+
+        marker_39922ee7dd49de929bf2f45e5e00ecab.bindPopup(popup_419e74484fa7ea7764c7a077a4b55452)
+        ;
+
+        
+    
+    
+            var marker_68efa1fdef0098090db2af341b59894e = L.marker(
+                [38.101442, 127.393008],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_3c9f1da51d3dde9fea6aaf30cf9da98c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5d43f66e8867a5901d288edb064dec5e = $(`<div id="html_5d43f66e8867a5901d288edb064dec5e" style="width: 100.0%; height: 100.0%;">각흘계곡 캠핑장</div>`)[0];
+                popup_3c9f1da51d3dde9fea6aaf30cf9da98c.setContent(html_5d43f66e8867a5901d288edb064dec5e);
+            
+        
+
+        marker_68efa1fdef0098090db2af341b59894e.bindPopup(popup_3c9f1da51d3dde9fea6aaf30cf9da98c)
+        ;
+
+        
+    
+    
+            var marker_f12024a6d268ba28c118871a615de634 = L.marker(
+                [37.3808325, 127.4552162],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_2cea23f06be9858c687a64a2ed376dda = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6fd1a7756585aa286fa69ff45c604f6c = $(`<div id="html_6fd1a7756585aa286fa69ff45c604f6c" style="width: 100.0%; height: 100.0%;">오름새</div>`)[0];
+                popup_2cea23f06be9858c687a64a2ed376dda.setContent(html_6fd1a7756585aa286fa69ff45c604f6c);
+            
+        
+
+        marker_f12024a6d268ba28c118871a615de634.bindPopup(popup_2cea23f06be9858c687a64a2ed376dda)
+        ;
+
+        
+    
+    
+            var marker_242ed6ab2bafc8a4cf15e82facf4a370 = L.marker(
+                [38.0189723, 126.9779482],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_6ff61367f28cf350d9236fc361dc48b6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e95e8f4e72b1fab44496f7a7eca1a23e = $(`<div id="html_e95e8f4e72b1fab44496f7a7eca1a23e" style="width: 100.0%; height: 100.0%;">평화강변수목 캠핑장</div>`)[0];
+                popup_6ff61367f28cf350d9236fc361dc48b6.setContent(html_e95e8f4e72b1fab44496f7a7eca1a23e);
+            
+        
+
+        marker_242ed6ab2bafc8a4cf15e82facf4a370.bindPopup(popup_6ff61367f28cf350d9236fc361dc48b6)
+        ;
+
+        
+    
+    
+            var marker_ab2d4422d576d716e805b90346c6a209 = L.marker(
+                [37.8367557, 127.3143217],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_041eac50a2cc22bd54915f0509314a6a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_35f6a3cc17844d81acbe7dd4d8fa0a44 = $(`<div id="html_35f6a3cc17844d81acbe7dd4d8fa0a44" style="width: 100.0%; height: 100.0%;">가평 물골숲 계곡 캠핑장</div>`)[0];
+                popup_041eac50a2cc22bd54915f0509314a6a.setContent(html_35f6a3cc17844d81acbe7dd4d8fa0a44);
+            
+        
+
+        marker_ab2d4422d576d716e805b90346c6a209.bindPopup(popup_041eac50a2cc22bd54915f0509314a6a)
+        ;
+
+        
+    
+    
+            var marker_6e8abf34916b4b0bb6400d2c689ca9ab = L.marker(
+                [37.1177422, 127.3131954],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_e07d789968e9142cbb9189c97deeb8be = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03f4fc67acf2d9a87771f838d7926c17 = $(`<div id="html_03f4fc67acf2d9a87771f838d7926c17" style="width: 100.0%; height: 100.0%;">구봉산오토캠핑장 나인힐스</div>`)[0];
+                popup_e07d789968e9142cbb9189c97deeb8be.setContent(html_03f4fc67acf2d9a87771f838d7926c17);
+            
+        
+
+        marker_6e8abf34916b4b0bb6400d2c689ca9ab.bindPopup(popup_e07d789968e9142cbb9189c97deeb8be)
+        ;
+
+        
+    
+    
+            var marker_b8969f93f51713a6e5b9a1cda31d9bd6 = L.marker(
+                [37.1244409, 127.3144633],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_da82725b46f9a5da448d4e1b953fa07a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1258615eb6202ce99dadf878c0b0312a = $(`<div id="html_1258615eb6202ce99dadf878c0b0312a" style="width: 100.0%; height: 100.0%;">장수자연관광농원</div>`)[0];
+                popup_da82725b46f9a5da448d4e1b953fa07a.setContent(html_1258615eb6202ce99dadf878c0b0312a);
+            
+        
+
+        marker_b8969f93f51713a6e5b9a1cda31d9bd6.bindPopup(popup_da82725b46f9a5da448d4e1b953fa07a)
+        ;
+
+        
+    
+    
+            var marker_b33af2098963a3545bcf11a75659f19a = L.marker(
+                [37.7022064, 127.5169624],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_27ef5f6451493e8cb0af91ac5d8ec0a6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ba05779001701001c60d412966cbdaa2 = $(`<div id="html_ba05779001701001c60d412966cbdaa2" style="width: 100.0%; height: 100.0%;">올덴캠핑장</div>`)[0];
+                popup_27ef5f6451493e8cb0af91ac5d8ec0a6.setContent(html_ba05779001701001c60d412966cbdaa2);
+            
+        
+
+        marker_b33af2098963a3545bcf11a75659f19a.bindPopup(popup_27ef5f6451493e8cb0af91ac5d8ec0a6)
+        ;
+
+        
+    
+    
+            var marker_572c32b6ddba8ca4d2b661f30c7ddd59 = L.marker(
+                [37.8537932, 127.3480863],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_22ae94aeb13e879753658875f827bca7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03ad4fc260bef582175a91d90f5b4519 = $(`<div id="html_03ad4fc260bef582175a91d90f5b4519" style="width: 100.0%; height: 100.0%;">용수 그린랜드</div>`)[0];
+                popup_22ae94aeb13e879753658875f827bca7.setContent(html_03ad4fc260bef582175a91d90f5b4519);
+            
+        
+
+        marker_572c32b6ddba8ca4d2b661f30c7ddd59.bindPopup(popup_22ae94aeb13e879753658875f827bca7)
+        ;
+
+        
+    
+    
+            var marker_abb812aab183d5ff272af53ea44285db = L.marker(
+                [37.5920107, 127.485588],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_2d63e946a95bf8412cdbe594ca22c853 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7ac45dee0f5a2844d0c693d6dcdd5394 = $(`<div id="html_7ac45dee0f5a2844d0c693d6dcdd5394" style="width: 100.0%; height: 100.0%;">유명산라온캠핑장</div>`)[0];
+                popup_2d63e946a95bf8412cdbe594ca22c853.setContent(html_7ac45dee0f5a2844d0c693d6dcdd5394);
+            
+        
+
+        marker_abb812aab183d5ff272af53ea44285db.bindPopup(popup_2d63e946a95bf8412cdbe594ca22c853)
+        ;
+
+        
+    
+    
+            var marker_8b83e623e7df698536661c82f424b0a6 = L.marker(
+                [37.590898, 127.5131851],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_3511f2e889f319ce1e120ddc6df45dfb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2076ac51b9c2f4e0651c5553ec7c4650 = $(`<div id="html_2076ac51b9c2f4e0651c5553ec7c4650" style="width: 100.0%; height: 100.0%;">유명산힐링캠핑장</div>`)[0];
+                popup_3511f2e889f319ce1e120ddc6df45dfb.setContent(html_2076ac51b9c2f4e0651c5553ec7c4650);
+            
+        
+
+        marker_8b83e623e7df698536661c82f424b0a6.bindPopup(popup_3511f2e889f319ce1e120ddc6df45dfb)
+        ;
+
+        
+    
+    
+            var marker_a3591e1a2827fb6ec51e1aebe29e493b = L.marker(
+                [37.7568926, 127.4035868],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_c1eea6fd87d7bfbaf28e2a5a138ff48b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cca698ec35707afd210be228e25d29b3 = $(`<div id="html_cca698ec35707afd210be228e25d29b3" style="width: 100.0%; height: 100.0%;">힐링가평오토캠핑장</div>`)[0];
+                popup_c1eea6fd87d7bfbaf28e2a5a138ff48b.setContent(html_cca698ec35707afd210be228e25d29b3);
+            
+        
+
+        marker_a3591e1a2827fb6ec51e1aebe29e493b.bindPopup(popup_c1eea6fd87d7bfbaf28e2a5a138ff48b)
+        ;
+
+        
+    
+    
+            var marker_0146bb8157849bdf610cb2e8014d27a7 = L.marker(
+                [37.8920434, 126.7447929],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_b1fd841dc95bb9712dd42396ebf8438a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_338738e1a925f9af41fe2f35520a4f05 = $(`<div id="html_338738e1a925f9af41fe2f35520a4f05" style="width: 100.0%; height: 100.0%;">평화누리캠핑장</div>`)[0];
+                popup_b1fd841dc95bb9712dd42396ebf8438a.setContent(html_338738e1a925f9af41fe2f35520a4f05);
+            
+        
+
+        marker_0146bb8157849bdf610cb2e8014d27a7.bindPopup(popup_b1fd841dc95bb9712dd42396ebf8438a)
+        ;
+
+        
+    
+    
+            var marker_01b001811b3d9c03a396825e22e8bdb5 = L.marker(
+                [37.1997701, 126.5603735],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_aa4ab45d2465f19caa82f454ade5e3c4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e9813cfec43bbc7a7230a61b0ce3fb8 = $(`<div id="html_2e9813cfec43bbc7a7230a61b0ce3fb8" style="width: 100.0%; height: 100.0%;">나라펜션캠핑장</div>`)[0];
+                popup_aa4ab45d2465f19caa82f454ade5e3c4.setContent(html_2e9813cfec43bbc7a7230a61b0ce3fb8);
+            
+        
+
+        marker_01b001811b3d9c03a396825e22e8bdb5.bindPopup(popup_aa4ab45d2465f19caa82f454ade5e3c4)
+        ;
+
+        
+    
+    
+            var marker_425fd3d6c08f494e1a9448ddefa23c43 = L.marker(
+                [37.8826813, 126.8709054],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_44bb2b6ff9632cfe6f80c90331cb4893 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7e216fe4f5810d0d225284cc556dc7b3 = $(`<div id="html_7e216fe4f5810d0d225284cc556dc7b3" style="width: 100.0%; height: 100.0%;">파쇠꼴마을고고캠핑장</div>`)[0];
+                popup_44bb2b6ff9632cfe6f80c90331cb4893.setContent(html_7e216fe4f5810d0d225284cc556dc7b3);
+            
+        
+
+        marker_425fd3d6c08f494e1a9448ddefa23c43.bindPopup(popup_44bb2b6ff9632cfe6f80c90331cb4893)
+        ;
+
+        
+    
+    
+            var marker_58e380661f455808266c4b85c4b51215 = L.marker(
+                [37.7017905, 127.2640635],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_3e7db5094e1b4a033228ac9911e7f57a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3edda170014bbe534cb9b0ceff0c0063 = $(`<div id="html_3edda170014bbe534cb9b0ceff0c0063" style="width: 100.0%; height: 100.0%;">해자연캠핑장</div>`)[0];
+                popup_3e7db5094e1b4a033228ac9911e7f57a.setContent(html_3edda170014bbe534cb9b0ceff0c0063);
+            
+        
+
+        marker_58e380661f455808266c4b85c4b51215.bindPopup(popup_3e7db5094e1b4a033228ac9911e7f57a)
+        ;
+
+        
+    
+    
+            var marker_1954170ba14be795ce489446b528a00c = L.marker(
+                [37.207208, 126.54624],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_b0b90e7184ec5eebb5b842472f33d635 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8ecab385631d89c39a8225d1e3538341 = $(`<div id="html_8ecab385631d89c39a8225d1e3538341" style="width: 100.0%; height: 100.0%;">대부관광농원 오캠핑</div>`)[0];
+                popup_b0b90e7184ec5eebb5b842472f33d635.setContent(html_8ecab385631d89c39a8225d1e3538341);
+            
+        
+
+        marker_1954170ba14be795ce489446b528a00c.bindPopup(popup_b0b90e7184ec5eebb5b842472f33d635)
+        ;
+
+        
+    
+    
+            var marker_dde726964ed278c3e78ba437acb67df3 = L.marker(
+                [36.999756, 126.920887],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_54df2ebc247283fad403ed769b9a4334 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_543e5271015ee0e165184e0227311c2e = $(`<div id="html_543e5271015ee0e165184e0227311c2e" style="width: 100.0%; height: 100.0%;">갈릴리 야영장</div>`)[0];
+                popup_54df2ebc247283fad403ed769b9a4334.setContent(html_543e5271015ee0e165184e0227311c2e);
+            
+        
+
+        marker_dde726964ed278c3e78ba437acb67df3.bindPopup(popup_54df2ebc247283fad403ed769b9a4334)
+        ;
+
+        
+    
+    
+            var marker_87a815e473ec7aafc8109ca320d70bfb = L.marker(
+                [37.768817, 127.470111],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_81ceb25522b4b511750b2c0be6d799b9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bdd9f8cf89e809b534c18a7a343a8aca = $(`<div id="html_bdd9f8cf89e809b534c18a7a343a8aca" style="width: 100.0%; height: 100.0%;">두레캠핑장</div>`)[0];
+                popup_81ceb25522b4b511750b2c0be6d799b9.setContent(html_bdd9f8cf89e809b534c18a7a343a8aca);
+            
+        
+
+        marker_87a815e473ec7aafc8109ca320d70bfb.bindPopup(popup_81ceb25522b4b511750b2c0be6d799b9)
+        ;
+
+        
+    
+    
+            var marker_2a66961e1e06a39c62b914a16c4af420 = L.marker(
+                [37.703585, 127.515035],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_16f1773066f1c49126a3e7207833df7c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e4bc482e3e8b869e2e4433aecf697c64 = $(`<div id="html_e4bc482e3e8b869e2e4433aecf697c64" style="width: 100.0%; height: 100.0%;">넵투누스 카라반</div>`)[0];
+                popup_16f1773066f1c49126a3e7207833df7c.setContent(html_e4bc482e3e8b869e2e4433aecf697c64);
+            
+        
+
+        marker_2a66961e1e06a39c62b914a16c4af420.bindPopup(popup_16f1773066f1c49126a3e7207833df7c)
+        ;
+
+        
+    
+    
+            var marker_ae701141dcb5b590074920344ee9566b = L.marker(
+                [37.2696195, 126.5589683],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_b165ce525ab3bfd405b4de69ed505fd3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_150a13a01589aeb5967cbd22b04c0aaa = $(`<div id="html_150a13a01589aeb5967cbd22b04c0aaa" style="width: 100.0%; height: 100.0%;">푸른섬 캠핑장</div>`)[0];
+                popup_b165ce525ab3bfd405b4de69ed505fd3.setContent(html_150a13a01589aeb5967cbd22b04c0aaa);
+            
+        
+
+        marker_ae701141dcb5b590074920344ee9566b.bindPopup(popup_b165ce525ab3bfd405b4de69ed505fd3)
+        ;
+
+        
+    
+    
+            var marker_5b3e19390cabe798819e213e5ab90c24 = L.marker(
+                [37.9543807, 127.4737477],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_e5bfb29ef8197c880c85c78f175aa746 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_896582346fd6c696a5fe18b77089601c = $(`<div id="html_896582346fd6c696a5fe18b77089601c" style="width: 100.0%; height: 100.0%;">용소캠핑장</div>`)[0];
+                popup_e5bfb29ef8197c880c85c78f175aa746.setContent(html_896582346fd6c696a5fe18b77089601c);
+            
+        
+
+        marker_5b3e19390cabe798819e213e5ab90c24.bindPopup(popup_e5bfb29ef8197c880c85c78f175aa746)
+        ;
+
+        
+    
+    
+            var marker_af9298b2209b33fb1828deb6002aec99 = L.marker(
+                [37.8181789, 127.2275313],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_e83a432d46ec35aa0496b6ba7b5474bd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_772ea08323c090677a666dd7206117b5 = $(`<div id="html_772ea08323c090677a666dd7206117b5" style="width: 100.0%; height: 100.0%;">어거스트캠핑장</div>`)[0];
+                popup_e83a432d46ec35aa0496b6ba7b5474bd.setContent(html_772ea08323c090677a666dd7206117b5);
+            
+        
+
+        marker_af9298b2209b33fb1828deb6002aec99.bindPopup(popup_e83a432d46ec35aa0496b6ba7b5474bd)
+        ;
+
+        
+    
+    
+            var marker_9c5180360fbe86e4a6df3f3d62fb2202 = L.marker(
+                [37.6348394, 127.4728768],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_c2df9a72ef9d772b569bba5b8798d71f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_216790c0c6eb095ba5748a2623cb588d = $(`<div id="html_216790c0c6eb095ba5748a2623cb588d" style="width: 100.0%; height: 100.0%;">맑은물소리캠핑장</div>`)[0];
+                popup_c2df9a72ef9d772b569bba5b8798d71f.setContent(html_216790c0c6eb095ba5748a2623cb588d);
+            
+        
+
+        marker_9c5180360fbe86e4a6df3f3d62fb2202.bindPopup(popup_c2df9a72ef9d772b569bba5b8798d71f)
+        ;
+
+        
+    
+    
+            var marker_5846c7f5662feed038822c20ef83ae67 = L.marker(
+                [37.7467579, 127.3501337],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_ec12912835643e06cce0a644f895cced = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cd89a8b3caa550a9d2339048562b6257 = $(`<div id="html_cd89a8b3caa550a9d2339048562b6257" style="width: 100.0%; height: 100.0%;">블루문캠핑장</div>`)[0];
+                popup_ec12912835643e06cce0a644f895cced.setContent(html_cd89a8b3caa550a9d2339048562b6257);
+            
+        
+
+        marker_5846c7f5662feed038822c20ef83ae67.bindPopup(popup_ec12912835643e06cce0a644f895cced)
+        ;
+
+        
+    
+    
+            var marker_0d222413795c9f5963601eeaf785ce47 = L.marker(
+                [37.7744434, 127.3552627],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_78ff8df4f66a0d60f2e77a7ac01c37a7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_786d589e473817e1c51a8f2f2bc62f0e = $(`<div id="html_786d589e473817e1c51a8f2f2bc62f0e" style="width: 100.0%; height: 100.0%;">잣향기푸른숲캠핑장</div>`)[0];
+                popup_78ff8df4f66a0d60f2e77a7ac01c37a7.setContent(html_786d589e473817e1c51a8f2f2bc62f0e);
+            
+        
+
+        marker_0d222413795c9f5963601eeaf785ce47.bindPopup(popup_78ff8df4f66a0d60f2e77a7ac01c37a7)
+        ;
+
+        
+    
+    
+            var marker_5e0549eddff584bb9da09dd09c75692f = L.marker(
+                [37.9573141, 127.3360145],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_4a19067b69a6fdff3a8b25a63d496e2d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_59bba99fe39986b4f6d26e9e1ed814a8 = $(`<div id="html_59bba99fe39986b4f6d26e9e1ed814a8" style="width: 100.0%; height: 100.0%;">하솜캠프</div>`)[0];
+                popup_4a19067b69a6fdff3a8b25a63d496e2d.setContent(html_59bba99fe39986b4f6d26e9e1ed814a8);
+            
+        
+
+        marker_5e0549eddff584bb9da09dd09c75692f.bindPopup(popup_4a19067b69a6fdff3a8b25a63d496e2d)
+        ;
+
+        
+    
+    
+            var marker_39eec762aad990fb14af0065dabea90d = L.marker(
+                [37.9666339, 127.1902824],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_46d44f6f8d0f7ce4123be8688135c403 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98dbed89512a088bd40edb30d724866e = $(`<div id="html_98dbed89512a088bd40edb30d724866e" style="width: 100.0%; height: 100.0%;">별보미 관광농원</div>`)[0];
+                popup_46d44f6f8d0f7ce4123be8688135c403.setContent(html_98dbed89512a088bd40edb30d724866e);
+            
+        
+
+        marker_39eec762aad990fb14af0065dabea90d.bindPopup(popup_46d44f6f8d0f7ce4123be8688135c403)
+        ;
+
+        
+    
+    
+            var marker_1fb0c9778dbe2c5f61a53b8d8a56be1d = L.marker(
+                [37.5426652, 127.6172013],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_20f0a85e231aa0a55dd867ea636b7175 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f2667496fc2faaf6dc57c5eb3b1e793 = $(`<div id="html_9f2667496fc2faaf6dc57c5eb3b1e793" style="width: 100.0%; height: 100.0%;">문앤스타 캠핑장</div>`)[0];
+                popup_20f0a85e231aa0a55dd867ea636b7175.setContent(html_9f2667496fc2faaf6dc57c5eb3b1e793);
+            
+        
+
+        marker_1fb0c9778dbe2c5f61a53b8d8a56be1d.bindPopup(popup_20f0a85e231aa0a55dd867ea636b7175)
+        ;
+
+        
+    
+    
+            var marker_f19532711a7abba565ada135cbb4698b = L.marker(
+                [37.7673365, 127.1693863],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_d0f551ca28326f47c8bef74ac7ebeec7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_df93f7c630693fe09844232543782f23 = $(`<div id="html_df93f7c630693fe09844232543782f23" style="width: 100.0%; height: 100.0%;">연지곤지팜캠핑장</div>`)[0];
+                popup_d0f551ca28326f47c8bef74ac7ebeec7.setContent(html_df93f7c630693fe09844232543782f23);
+            
+        
+
+        marker_f19532711a7abba565ada135cbb4698b.bindPopup(popup_d0f551ca28326f47c8bef74ac7ebeec7)
+        ;
+
+        
+    
+    
+            var marker_48afa795d4971414f0d029577c49f3d1 = L.marker(
+                [38.0925541, 127.2340355],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_66f59cd9511fa2871bfd9fb08684de71 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d894b1f4ab5ddbe3dbc92f6cf395a2a = $(`<div id="html_0d894b1f4ab5ddbe3dbc92f6cf395a2a" style="width: 100.0%; height: 100.0%;">소회산리멍우리협곡관광농원캠핑장</div>`)[0];
+                popup_66f59cd9511fa2871bfd9fb08684de71.setContent(html_0d894b1f4ab5ddbe3dbc92f6cf395a2a);
+            
+        
+
+        marker_48afa795d4971414f0d029577c49f3d1.bindPopup(popup_66f59cd9511fa2871bfd9fb08684de71)
+        ;
+
+        
+    
+    
+            var marker_57ed12de6250236ce001b8ce9970d08d = L.marker(
+                [37.9040331, 127.570726],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_21ddd061af9851f7abfc0009aa8217ef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_90a026153d1cbfb6d81c903dc6bdd500 = $(`<div id="html_90a026153d1cbfb6d81c903dc6bdd500" style="width: 100.0%; height: 100.0%;">열두달캠핑장</div>`)[0];
+                popup_21ddd061af9851f7abfc0009aa8217ef.setContent(html_90a026153d1cbfb6d81c903dc6bdd500);
+            
+        
+
+        marker_57ed12de6250236ce001b8ce9970d08d.bindPopup(popup_21ddd061af9851f7abfc0009aa8217ef)
+        ;
+
+        
+    
+    
+            var marker_fb9d08e04360110b7ed3b8c70e08dca2 = L.marker(
+                [37.4279138, 127.5681931],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_ea2e75973d4b5d45c86c2a4342b23ea3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0934fd35862902b6b0176f227ed3c03a = $(`<div id="html_0934fd35862902b6b0176f227ed3c03a" style="width: 100.0%; height: 100.0%;">클라인캠프 빌리지</div>`)[0];
+                popup_ea2e75973d4b5d45c86c2a4342b23ea3.setContent(html_0934fd35862902b6b0176f227ed3c03a);
+            
+        
+
+        marker_fb9d08e04360110b7ed3b8c70e08dca2.bindPopup(popup_ea2e75973d4b5d45c86c2a4342b23ea3)
+        ;
+
+        
+    
+    
+            var marker_ebd07da1d770d4d12ae4d6d724469861 = L.marker(
+                [37.220482, 126.6001701],
+                {}
+            ).addTo(map_366af968d63e6e624017bea0b249a3a2);
+        
+    
+        var popup_45b36bb659d15eb5d90774f606ff57b8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8a249549f895aec4444cdc32b9f816a1 = $(`<div id="html_8a249549f895aec4444cdc32b9f816a1" style="width: 100.0%; height: 100.0%;">대부도 아라뜰 캠핑장</div>`)[0];
+                popup_45b36bb659d15eb5d90774f606ff57b8.setContent(html_8a249549f895aec4444cdc32b9f816a1);
+            
+        
+
+        marker_ebd07da1d770d4d12ae4d6d724469861.bindPopup(popup_45b36bb659d15eb5d90774f606ff57b8)
+        ;
+
+        
+    
+    
+            map_366af968d63e6e624017bea0b249a3a2.scrollEnabled = true;
+
+            map_366af968d63e6e624017bea0b249a3a2.toggleScroll = function() {
+                if (this.scrollEnabled) {
+                    this.scrollEnabled = false;
+                    this.scrollWheelZoom.disable();
+                } else {
+                    this.scrollEnabled = true;
+                    this.scrollWheelZoom.enable();
+                }
+            };
+            map_366af968d63e6e624017bea0b249a3a2.toggleScroll();
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems = new L.featureGroup().addTo(
+                map_366af968d63e6e624017bea0b249a3a2
+            );
+            options.edit.featureGroup = drawnItems;
+            var draw_control_25023e1402f22fa38646af8f98cce3fa = new L.Control.Draw(
+                options
+            ).addTo( map_366af968d63e6e624017bea0b249a3a2 );
+            map_366af968d63e6e624017bea0b249a3a2.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems.addLayer(layer);
+             });
+            map_366af968d63e6e624017bea0b249a3a2.on('draw:created', function(e) {
+                drawnItems.addLayer(e.layer);
+            });
+            
+        
+</script>
+</html>

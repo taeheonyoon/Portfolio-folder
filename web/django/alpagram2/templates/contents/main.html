@@ -1,0 +1,211 @@
+{% extends 'top.html' %}
+{% load static %}
+{% load humanize %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
+{% endblock style %}
+{% block contents %}
+  <div class="container my-3">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-5">
+        <div class="row border rounded mb-3 follow_list  align-self-center">
+          <!-- 팔로우 목록 보여주기-->
+          <div class="col-3 my-2 text-center">
+            <img src="" alt="" class="rounded-circle profile-image">
+            <span class="d-block small"></span>
+          </div>
+        </div>
+        <!--왼쪽 feed 반복될 부분-->
+        {% for content in contents %}
+          <div class="row card mb-3">
+            <div class="card-header">
+              <!--프로필 사진 / 이름 / 팔로우 취소 -->
+              <img src="{{user.profile.image.url}}" alt="" class="rounded-circle mr-2 profile-image"/>
+              <span class="font-weight-bold"></span>
+              <!-- 본인 계정은 팔로우 취소가 안 나오게 -->
+
+              <a href="" class="unfollow">
+                <span class="badge badge-pill badge-danger">팔로우 취소</span>
+              </a>
+
+            </div>
+
+            <div id="carouselExampleControls" class="carousel slide card-img-top" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="" class="d-block w-100" alt="user image">
+                </div>
+              </div>
+
+              <!--사용자가 올린 사진 반복 부분-->
+              <div id="carouselExampleControls{{forloop.counter0}}" class="carousel slide card-img-top" data-ride="carousel">
+                <div class="carousel-inner">
+                  {% for img in content.image_set.all %}
+                    <!-- 첫번째 사진 class="carousel-item active" 들어와야함 / 나머지 사진은 class="carousel-item"-->
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% else %} {{default_if_none}} {% endif %}">
+                      <img src="{{img.image.url}}" class="d-block w-100" alt="user image">
+                    </div>
+                  {% endfor %}
+                </div>
+                {% if content.image_set.count > 1 %}
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{forloop.counter0}}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{forloop.counter0}}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </button>
+                {% endif %}
+                <!--사용자가 올린 사진 반복 부분 종료-->
+              </div>
+              <div class="card-body">
+                <div class="mb-2">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <a href="">
+                        <span class="material-icons-outlined d-print-inline">
+                          favorite_border
+                        </span>
+                      </a>
+                      <span class="material-icons-outlined d-print-inline px-3">
+                        maps_ugc
+                      </span>
+                      <span class="material-icons-outlined d-print-inline">
+                        send
+                      </span>
+                      <span class="material-icons-outlined">
+                        bookmark_border
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2">좋아요 13,140개</div>
+                <div class="mb-2">
+                  <span class="font-weight-bold">{{content.user.nickname}}</span>
+                  <span class="small">{{content.text|truncatechars:8}}
+                    더보기</span>
+                </div>
+                <div class="mb-2">
+                  <a href="" class="small text-muted">댓글 개 모두 보기</a>
+                  <!--댓글 하나 보여주기-->
+                  <div class="small mt-2"></div>
+                </div>
+
+                <div class="small text-muted">{{content.modified_at|naturaltime}}</div>
+              </div>
+              <div class="card-footer text-muted bg-white" style="padding: 0.9rem 0.8rem">
+                <form class="form-inline" method="post">
+                  <div class="form-group mx-2">
+                    <span style="font-size: 1.6rem">&#128512;</span>
+                  </div>
+                  <div class="form-group">
+                    <textarea name="comment_text" class="control comment_text" rows="1" placeholder="댓글 달기..."></textarea>
+                  </div>
+                  <div>
+                    <input type="hidden" name="content_id" value="" class="content_id">
+                  </div>
+                  <div class="form-group ml-2">
+                    <button class="button comment">게시</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- feed end -->
+          {% endfor %}
+        </div>
+
+        <div class="col-md-auto"></div>
+
+        <!--right-->
+        <div class="col-sm-5">
+          <!-- 로그인 한 user 정보 start-->
+          <div class="row">
+            <div class="col-2 align-self-center">
+              <img src="{{user.profile.image.url}}" alt="" class="rounded-circle  profile-image"/>
+            </div>
+            <div class="col-7">
+              <p class="mb-0"></p>
+              <p class="card-text mt-0">
+                <small class="text-muted"></small>
+              </p>
+            </div>
+            <div class="col-2 align-self-center text-right">
+              <a href="">
+                <small class="text-primary">전환</small>
+              </a>
+            </div>
+          </div>
+          <!-- 로그인 한 user 정보 end -->
+
+          <div class="row recommend mt-3">
+            <div class="col-9">
+              <p>회원님을 위한 추천</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-2">
+              <img src="" alt="" class="rounded-circle profile-image"/>
+            </div>
+            <div class="col-7">
+              <p class="mb-0"></p>
+              <p class="card-text mt-0">
+                <small class="text-muted">
+                  회원님이 팔로우합니다.</small>
+              </p>
+            </div>
+            <div class="col-2 align-self-center text-right">
+              <a href="" class="follow">
+                <small class="text-primary">팔로우</small>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <!--right end-->
+      </div>
+    </div>
+
+    <!--새글 작성 모달 창-->
+    {% include 'contents/modal.html' %}
+  {% endblock contents %}
+  {% block script %}
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script>
+      Dropzone.autoDiscover = false;
+      const dropzoneUploader = new Dropzone("form.dropzone", {
+        init: function () {
+          $("#upload").click(function () {
+            // 큐에 있던 이미지 파일 호출
+            dropzoneUploader.processQueue();
+          });
+          this.on("addedfile", file => {
+            console.log("A file has been added");
+          });
+          this.on("sending", function (file, xhr, formData) {
+            formData.append("text", $("#text").val());
+          });
+          this.on("success", function (file, response) {
+            console.log('성공');
+            location.reload();
+            $(".modal").hide();
+          });
+          this.on('queuecomplete', function () {
+            console.log("업로드 성공");
+          });
+          this.on("error", function () {
+            alert('error 발생. 다시 시도해 주세요');
+          });
+        }
+
+        paramName: "file",
+        parallUploads: 10, //이미지 업로드 허용 갯수
+        autoProcessQueue: false, //큐에 추가될 뿐 자동으로 처리되진 않음
+        type: 'POST',
+        acceptedFiles: '.jpeg, .jpg, .png, .gif',
+        uploadMultiple: true // 여러 개 파일 업로드 할거니까 default:false임
+      });
+    </script>
+  {% endblock script %}

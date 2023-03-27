@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="row">
+    <h1 class="pb-3 boarder-bottom">Detail</h1>
+  </div>
+  <div class="row mt-5">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group mb-2">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" name="title" id="title" class="form-control" value="{{board.title}}">
+      </div>
+      <div class="form-group mb-2">
+        <label for="contents" class="form-label">내용</label>
+        <textarea name="contents" id="contents" rows="10" class="form-control">{{board.contents}}</textarea>
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <label for="writer" class="form-control">작성자</label>
+      <input type="text" name="writer" id="writer" class="form-control" value="{{board.writer}}" readonly="readonly">
+    </div>
+    <div class="form-group mb-2">
+      <label for="register_dttm" class="form-control">작성날짜</label>
+      <input type="text" name="register_dttm" id="register_dttm" class="form-control" value="{{board.registered_dttm}}" readonly="readonly">
+    </div>
+    <div class="form-group mb-2">
+      {% for tah in board.tags.all %}
+        <span class="badge bg-secondary">
+          #{{tah.name}}
+        </span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="button">목록</button>
+    </div>
+  </form>
+</div>
+{% endblock contents %}
+{% block script %}
+<script>
+  //목록 클릭시 리스트 보여주기
+  document
+    .querySelector('.btn-primary')
+    .addEventListener('click', () => location.href = "{% url 'board_list' %}")
+</script>
+{% endblock script %}

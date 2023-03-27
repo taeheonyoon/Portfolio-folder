@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'widgets/rateit/rateit.css' %}">  
+{% endblock  %}
+{% block contents %}
+  <div class=" container="container" my-3"="my-3"">
+
+    {{store.name}}
+
+</div>
+<h5 class="border-bottom border-dark py-2">{{post.comment_set.count}}개의 댓글이 있습니다.</h5>
+{% for review in store.review_set.all %}
+<li>
+    {% if  review.photo %}
+        <a href="">
+            <img style="width: 50px; height: 50px;" src="{{ review.photo.url }}" alt="">
+        </a>
+    {% endif %}
+    {{ review.user }}
+    {{ review.content }}
+    {{ review.grade }}
+    {{ review.created_at }}
+    {{ review.updated_at }}
+    <!--delete-->
+    {% if user == review.user %}
+    <form action="" method="POST" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" value="DELETE">
+    </form>
+    {% endif %}
+
+    {% endfor %}
+</li>
+<!--create-->
+<div>
+    {% if request.user.is_authenticated %}
+
+    <form action="{% url 'review:comments_create' store.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="댓글등록" class="btn btn-primary" />
+    </form>
+
+
+
+    {% comment "" %}
+    <form action="{% url 'review:comments_create' store.pk %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form }}
+
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+    <input type="submit" value="댓글등록" class="btn btn-primary" />
+    {% endcomment %}
+    {% else %}
+    <a href="{% url 'login' %}">[댓글을 작성하려면 로그인하세요.]</a>
+    {% endif %}
+    <a href="{% url 'review:storelist' %}" class="btn btn-success">목록으로 돌아가기</a>
+</div>
+{% endblock contents %}
+
+{% block script %}
+<script src="{% static 'widgets/rateit/jquery.rateit.min.js' %} "></script>
+{% endblock script %}

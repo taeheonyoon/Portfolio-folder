@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>code</th>
+      <th>title</th>
+      <th>author</th>
+      <th>price</th>
+    </tr>
+    <!-- 도서 정보 반복될 부분-->
+    {% for book in book_list %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{book.code}}</td>
+        <td>
+          <a href="{% url 'detail' book.code %}">{{book.title}}</a>
+        </td>
+        <td>{{book.author}}</td>
+        <td>{{book.price}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock contents %}

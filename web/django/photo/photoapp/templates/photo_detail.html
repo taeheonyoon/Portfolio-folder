@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  img {
+    width: 500px;
+    height: 319px;
+  }
+</style>
+{% endblock style %} 
+{% block contents %}
+
+<!-- form 요소를 p 태그로 만들어주세요-->
+{% comment %}{{form.as_p}}{% endcomment %}
+
+<h1>{{photo.title}}</h1>
+<!--title 나올부분-->
+<div class="row py-3">
+  <div class="col">
+    {% comment %}<a href="/photo/{{photo.id}}/edit/" class="btn btn-success"
+      >Edit Photo</a
+    >
+    <!--id 값 넘겨주기-->
+    <a href="/photo/{{photo.id}}/remove/" class="btn btn-danger"
+      >Delete Photo</a
+    >
+    <a href="/photo/" class="btn btn-info">List Photo</a>{% endcomment %}
+
+    <a href="{% url 'edit' pk=photo.pk %}" class="btn btn-success"
+      >Edit Photo</a
+    >
+    <!--id 값 넘겨주기-->
+    <a href="{% url 'remove' pk=photo.pk %}" class="btn btn-danger"
+      >Delete Photo</a
+    >
+    <a href="{% url 'home' %}" class="btn btn-info">List Photo</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col photo">
+    <img src="{{photo.image}}" alt="" /><!--image 나올부분-->
+    <p>{{photo.description}}</p>
+    <!--description 나올부분-->
+    <p>{{photo.price}}</p>
+    <!--price 나올부분-->
+  </div>
+</div>
+{% endblock contents %}

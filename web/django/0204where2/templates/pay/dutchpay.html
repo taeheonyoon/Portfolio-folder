@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/styled.css' %}"/>
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+{% endblock style %}
+{% block contents %}
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Clarence Taylor</span>
+      <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'img/dutchpay.png' %}" alt="..."/></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/pay/dutchpay/">더치페이 계산</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider"/>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/pay/roulette/">룰렛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/pay/tic">틱택토</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <br/>
+  <br/>
+  <br>
+  <br>
+  <br>
+  <!--폼안의 내용을 views.py 안의 send_email 함수에 가져오기-->
+  <div class="card ml-6" style="width:60%;">
+    <div class="d-flex justify-content-center card-header">
+      <h2>더치페이 계산</h2>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{% url 'pay:send_email' %}">
+        {% csrf_token %}
+        <table class="table table-success table-striped w-100">
+          <tr>
+            <td>
+              <label for="total_money">전체 금액&nbsp;&nbsp;&nbsp;</label>
+            </td>
+            <td><input type="text" name="total_money" id="total_money" size="50"/></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="total_people">총 인원&nbsp;</label>
+            </td>
+            <td><input type="text" name="total_people" id="total_people" size="50"/></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="deposit_account">계좌 번호&nbsp;</label>
+            </td>
+            <td><input type="text" name="deposit_account" id="deposit_account" size="50"/></td>
+          </tr>
+        </table>
+        <button type="button" class="btn btn-info go w-100" style="margin-top: -40px">메일 내용 생성</button>
+        <br>
+        <br>
+        <table class="table table-success table-striped w-100">
+          <tr>
+            <td>
+              <label for="t_bilge">메일 내용
+              </label>
+            </td>
+            <td>
+              <input type="text" name="t_bilge" id="t_bilge" placeholder="한사람당 x원, y 로 송금요청, z원은 뽀찌" size="50"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="t_bilge">보낼메일들</label>
+            </td>
+            <td>
+              <input type="text" name="t_name" id="t_name" placeholder="','로 구분하면 2인이상 가능" size="50"/>
+            </td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-danger w-100" id="btn_send" style="margin-top: -40px">메일로 보내기</button>
+      </form>
+    </div>
+  </div>
+{% endblock contents %}
+{% block script %}
+  <script>
+    document
+      .querySelector(".go")
+      .addEventListener("click", function () {
+        var total_money = document.querySelector("#total_money");
+        var total_people = document.querySelector("#total_people");
+        var deposit_account = document.querySelector("#deposit_account");
+        var ceil_unit = 500;
+        var x = Math.ceil(parseInt(total_money.value) / parseInt(total_people.value) / ceil_unit) * ceil_unit;
+        var y = x * total_people.value - total_money.value;
+
+        var bilge = (document.querySelector("#t_bilge").value = "한사람당 " + x + "원, " + deposit_account.value + " 로 송금, " + y + "원 뽀찌.");
+      });
+  </script>
+
+{% endblock script %}

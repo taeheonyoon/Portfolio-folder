@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block contents %}
+  {% include "form_errors.html" %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+      <label for="code">Code</label>
+      <input type="text" name="code" id="code" class="form-control" value="{{form.code.value}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">title</label>
+      <input type="text" name="title" id="title" class="form-control" value="{{form.title.value}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">author</label>
+      <input type="text" name="author" id="author" class="form-control" value="{{form.author.value}}" readonly="readonly"/>
+    </div>
+    <div class="form-group mb-3">
+      <label for="code">price</label>
+      <input type="text" name="price" id="price" class="form-control" value="{{form.price.value}}"/>
+    </div>
+
+    <div class="form-group mb-3">
+      <button type="submit" class="btn btn-success">수정</button>
+      <button type="submit" class="btn btn-danger">삭제</button>
+      <button type="submit" class="btn btn-primary">리스트</button>
+    </div>
+  </form>
+{% endblock contents %}
+{% block script %}
+  <script>
+    //리스트 버튼 클릭시 전체 리스트 보기로 이동
+    document
+      .querySelector(".btn-primary")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); //submit 이벤트의 기본 동작을 막는다.
+        location.href = "{% url 'list' %}";
+      });
+    //삭제 버튼 클릭시 pk 전송
+    document
+      .querySelector(".btn-danger")
+      .addEventListener("click", (e) => {
+        e.preventDefault(); //submit 이벤트의 기본 동작을 막는다.
+        location.href = "{% url 'remove' pk=form.code.value %}";
+      });
+  </script>
+{% endblock script %}

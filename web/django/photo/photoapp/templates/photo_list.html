@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block style %}
+<style>
+  img {
+    width: 500px;
+    height: 319px;
+  }
+</style>
+{% endblock %} {% block contents %}
+<div class="row pb-3">
+  <div class="col">
+    <h1>Photo list</h1>
+  </div>
+  <div class="col text-center">
+    <!-- href="new ==> 현재주소(http://127.0.0.1:8000/photo/) 뒤에다가 new 붙여줘 -->
+    <a href="{% url 'post' %}" class="btn btn-success">New Photo</a>
+  </div>
+</div>
+<!-- 도착한 데이터를 for 문으로 보여주가 -->
+{% if photos %} {% for photo in photos %}
+<div class="row photo py-3">
+  <div class="col">
+    <h2>
+      <a href="{% url 'detail' pk=photo.pk %}">{{photo.title}}</a>
+    </h2>
+  </div>
+  <div class="col">
+    <img src="{{photo.image}}" alt="{{photo.title}}" />
+  </div>
+  <div class="col">
+    <p>
+      <!--작성자, 가격 나올 부분-->
+      {{photo.author}} / {{photo.price}} 원
+    </p>
+  </div>
+</div>
+{% endfor %} {% endif %} {% endblock %}

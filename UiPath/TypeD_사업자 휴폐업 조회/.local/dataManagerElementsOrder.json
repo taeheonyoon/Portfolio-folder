@@ -1,0 +1,31 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Str_HometaxURL&Flowchart_1",
+        "Str_InfoExcelPath&Flowchart_1",
+        "Str_CloseExcelPath&Flowchart_1",
+        "DT_Info&Flowchart_1",
+        "Str_Status&Flowchart_1",
+        "Str_Date&Flowchart_1",
+        "DT_Result&Flowchart_1",
+        "Str_CloseDate&Flowchart_1",
+        "DT_Close&Flowchart_1",
+        "Password&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

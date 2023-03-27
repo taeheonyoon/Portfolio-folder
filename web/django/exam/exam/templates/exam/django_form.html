@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <form method="post">
+    {% csrf_token %}
+    {% comment "" %}{{ form.as_p}}{% endcomment %}
+
+    <!-- form.as_p 는 스타일링이 어렵기 때문에 직접 태그 작성 or 넘어온 폼을 태그 안에 넣어서 보여주기 -->
+    {% for field in form %}
+      <div class="from-group">
+        <label for="{{field.id_for_lavel}}">{{field.label}}</label>
+        <input type="text" class="form-control" id="{{field.id_for_lavel}}" name="{{field.name}}" placeholder="{{field.label}}">
+      </div>
+      {% if field.errors %}
+        {{field.errors}}}
+      {% endif %}
+    {% endfor %}
+    <div>
+      <button type="submit" class="btn btn-primary">전송</button>
+    </div>
+  </form>
+{% endblock contents %}

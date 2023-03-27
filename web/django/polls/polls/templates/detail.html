@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <form action="{% url 'vote' question.pk %}" method="post">
+    {% csrf_token %}
+    <fieldeset class="from-group border p-3">
+      <legend class="w-auto px-2">
+        <h3>{{question.question_text}}</h3>
+      </legend>
+      <p>
+        <strong></strong>
+      </p>
+      {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+        <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label>
+      {% endfor %}
+    </fieldeset>
+    <button class="btn btn-info" type="submit">vote</button>
+  </form>
+{% endblock %}

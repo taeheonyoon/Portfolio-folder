@@ -1,0 +1,37 @@
+#what:hover{
+    background-color:skyblue;
+    font-weight:bold;
+    color:navy;
+}
+
+#searchResult li:hover{
+    background-color:skyblue;
+    font-weight:bold;
+}
+
+
+
+#searchResult li:active{
+    background-color:blue;
+    font-weight:bold;
+    color:red;
+    box-shadow: 0 0 0 3px purple;
+}
+
+.text_custom:focus{
+   
+    font-weight:bold;
+    
+}
+
+.section-header h1{
+    font-weight:bold;
+    font-size: large;
+}
+
+#btn_select:hover, #find_route:hover{
+    background-color:skyblue;
+}
+#btn_select:active, #find_route:active{
+    background-color:red;
+}

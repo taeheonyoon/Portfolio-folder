@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>이거머거</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap core CSS-->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/fontawesome/css/all.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="{% static 'vendor/select2/css/select2.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/osahan.css' %}" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+  </head>
+
+  <body>
+
+    {% include 'navbar.html' %}
+    <div>
+      {% block contents %}{% endblock contents %}
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Select2 JavaScript-->
+    <script src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script src="{% static 'vendor/owl-carousel/owl.carousel.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
+    {% block script %}{% endblock script %}
+  </body>
+
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="card" style="width:20rem">
+    <div class="card-header">
+      <h1>Polls List</h1>
+      <small>익명투표</small>
+    </div>
+    <div class="list-group list-group-flush">
+      <!-- question_list object 화면에 보여주기-->
+      {% for question in question_list %}
+        <li class="list-group-item">
+          <a href="{% url 'detail' question.pk %}">{{question.question_text}}</a>
+        </li>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock contents %}

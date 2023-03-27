@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load users_tags %}
+{% load static %}
+{% block contents %}
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
+          <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
+            <div class="py-4 px-3 border-bottom">
+              <a href="#imageModal" data-bs-toggle="modal" data-bs-target="#imageModal">
+                <img src="{{user.profile.image.url}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image" title="프로필 사진 변경">
+              </a>
+              <h5 class="font-weight-bold text-dark mb-1 mt-4">{{user.name}}님</h5>
+              <p class="mb-0 text-muted">UI / UX Designer</p>
+            </div>
+            <div class="d-flex">
+              <div class="col-6 border-right p-3">
+                <h6 class="font-weight-bold text-dark mb-1">{% count_post user.id %}</h6>
+                <p class="mb-0 text-black-50 small">내가 쓴글</p>
+              </div>
+              <div class="col-6 p-3">
+                <h6 class="font-weight-bold text-dark mb-1">85</h6>
+                <p class="mb-0 text-black-50 small">방문자</p>
+              </div>
+            </div>
+            <div class="overflow-hidden border-top">
+              <a class="font-weight-bold p-3 d-block" href="{% url 'logout' %}">
+                Log Out
+              </a>
+            </div>
+          </div>
+          {% include 'users/profile_modal.html' %}
+
+        </aside>
+        <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">내 최신글</h6>
+            </div>
+            {% recent_post 3 user.id as posts %}
+            {% for p in posts %}
+              <div class="d-flex text-muted pt-3">
+                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveaspectratio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#849B38"/>
+                  <text x="50%" y="50%" fill="#849B38" dy=".3em">32x32</text>
+                </svg>
+                <p class="pb-3 mb-0 small lh-sm border-bottom">
+                  <strong class="d-block text-gray-dark">
+                    <a href="{% url 'board:detail' p.id %}">{{ p.subject }}</a>
+                  </strong>
+                  {{p.content|truncatechars:25}}
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">Experience</h6>
+            </div>
+            <div class="box-body p-3 border-bottom">
+              <div class="d-flex align-items-top job-item-header pb-2">
+                <div class="mr-2">
+                  <h6 class="font-weight-bold text-dark mb-0">Web designer</h6>
+                  <div class="text-truncate text-primary">Spotify Inc.</div>
+                  <div class="small text-gray-500">Oct 2020 - Present (4 year 7 month)
+                  </div>
+                </div>
+                <img class="img-fluid ml-auto mb-auto" src="{% static 'img/l3.png' %}" alt="">
+              </div>
+              <p class="mb-0">Find the most qualified people in the most unexpected places. Information for applicants to consider when applying for local positions.
+              </p>
+            </div>
+
+          </div>
+
+        </main>
+        <aside class="col col-xl-3 order-xl-3 col-lg-12 order-lg-3 col-12">
+          <div class="box shadow-sm border rounded bg-white mb-3">
+            <div class="box-title border-bottom p-3">
+              <h6 class="m-0">당신의 프로필에 방문한사람</h6>
+            </div>
+            <div class="box-body p-3">
+              <div class="d-flex align-items-center osahan-post-header mb-3 people-list">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="{% static 'img/p4.png' %}" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold mr-2">
+                  <div class="text-truncate">Sophia Lee</div>
+                  <div class="small text-gray-500">@Harvard
+                  </div>
+                </div>
+                <span class="ml-auto">
+                  <button type="button" class="btn btn-light btn-sm">메세지 보내기</button>
+                </span>
+              </div>
+              <div class="d-flex align-items-center osahan-post-header mb-3 people-list">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="{% static 'img/p9.png' %}" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold mr-2">
+                  <div class="text-truncate">John Doe</div>
+                  <div class="small text-gray-500">Traveler
+                  </div>
+                </div>
+                <span class="ml-auto">
+                  <button type="button" class="btn btn-light btn-sm">메세지 보내기</button>
+                </span>
+              </div>
+              <div class="d-flex align-items-center osahan-post-header mb-3 people-list">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="{% static 'img/p10.png' %}" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold mr-2">
+                  <div class="text-truncate">Julia Cox</div>
+                  <div class="small text-gray-500">Art Designer
+                  </div>
+                </div>
+                <span class="ml-auto">
+                  <button type="button" class="btn btn-light btn-sm">메세지 보내기</button>
+                </span>
+              </div>
+              <div class="d-flex align-items-center osahan-post-header mb-3 people-list">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="{% static 'img/p11.png' %}" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold mr-2">
+                  <div class="text-truncate">Robert Cook</div>
+                  <div class="small text-gray-500">@Photography
+                  </div>
+                </div>
+                <span class="ml-auto">
+                  <button type="button" class="btn btn-light btn-sm">메세지 보내기</button>
+                </span>
+              </div>
+              <div class="d-flex align-items-center osahan-post-header people-list">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="{% static 'img/p12.png' %}" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold mr-2">
+                  <div class="text-truncate">Richard Bell</div>
+                  <div class="small text-gray-500">@Envato
+                  </div>
+                </div>
+                <span class="ml-auto">
+                  <button type="button" class="btn btn-light btn-sm">메세지 보내기</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+    //현재사진삭제 클릭이 되면 a 태그 기능 중지
+    //ajax로 요청 보내기 "{% url 'user_profile_delete' %}"
+
+    $(".delete").on("click", function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        url: "{% url 'user_profile_delete' %}",
+
+        success: function (response) {
+          console.log(response);
+          location.reload();
+          //http : 127.0.0.1:8000/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+
+    //프로필 사진 변경 클릭 되면 사용자가 변경할 이미지를 선택
+    //사용자가 선택한 이미지를 서버로 전송(ajax)
+
+    $("#file").on("change", function (e) {
+
+      const form = document.querySelector("#image_change");
+
+      formData = new FormData(form);
+
+      $.ajax({
+        url: "{% url 'user_profile_update' %}", ///http://127.0.0.1:8000/users/profile/update/
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          console.log(response);
+          location.reload(); //http://127.0.0.1:8000/users/profile/페이지 새로고침
+        },
+        error: function (req, status, error) {
+          console.log(req.responseJSON.message);
+        }
+      })
+    })
+  </script>
+{% endblock script %}

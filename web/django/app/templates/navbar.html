@@ -1,0 +1,143 @@
+{% load static %}
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <title>이거머거</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap core CSS-->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/fontawesome/css/all.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <!-- Select2 CSS-->
+    <link href="{% static 'vendor/select2/css/select2.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/osahan.css' %}" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.theme.css' %}">
+    <style>
+      .custom-control-input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img alt="logo" src="{% static 'img/favicon.png' %}">
+          <span>이거머거</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">뭐먹지?
+                <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                뭐마시지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="{% url 'listing' %}">주변 술집</a>
+                <a class="dropdown-item" href="detail.html">회식</a>
+                <a class="dropdown-item" href="checkout.html">혼술</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                뭐하지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="{% url 'listing' %}">인도어</a>
+                <a class="dropdown-item" href="detail.html">아웃도어</a>
+                <a class="dropdown-item" href="checkout.html">여행</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                누가 내지?
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="track-order.html">돌려돌려 돌림판</a>
+                <a class="dropdown-item" href="invoice.html">사다리 게임</a>
+                <a class="dropdown-item" href="login.html">미니게임</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown dropdown-cart">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-clipboard-list"></i>
+                게시판
+                <span class="badge badge-success">5</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="invoice.html">이집 추천</a>
+                <a class="dropdown-item" href="login.html">음식사진 자랑하기</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img alt="Generic placeholder image" src="{% static 'img/user/4.png' %}" class="nav-osahan-pic rounded-pill">
+                내 정보
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                <a class="dropdown-item" href="orders.html#orders">
+                  <i class="icofont-food-cart"></i>
+                  내가 쓴글</a>
+                <a class="dropdown-item" href="orders.html#offers">
+                  <i class="icofont-sale-discount"></i>
+                  할인중</a>
+                <a class="dropdown-item" href="orders.html#favourites">
+                  <i class="icofont-heart"></i>
+                  찜한 맛집</a>
+                <a class="dropdown-item" href="orders.html#payments">
+                  <i class="icofont-credit-card"></i>
+                  미리 결제</a>
+                <a class="dropdown-item" href="orders.html#addresses">
+                  <i class="icofont-location-pin"></i>
+                  마이 페이지</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <footer class="pt-4 pb-4 text-center">
+      <div class="container">
+        <p class="mt-0 mb-0">© Copyright 2019 Food Line. All Rights Reserved</p>
+        <small class="mt-0 mb-0">
+          Made with
+          <i class="fas fa-heart heart-icon text-danger"></i>
+          by
+          <a class="text-danger" target="_blank" href="https://www.instagram.com/iamgurdeeposahan/">Gurdeep Osahan</a>
+          -
+          <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
+        </small>
+      </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Select2 JavaScript-->
+    <script src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script src="{% static 'vendor/owl-carousel/owl.carousel.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/custom.js' %}"></script>
+  </body>
+
+</html>

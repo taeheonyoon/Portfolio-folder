@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link href="{% static 'css/osahan.css' %}" rel="stylesheet">
+{% endblock style %}
+{% block contents %}
+  {% include 'users_sidebar.html' %}
+
+  <div class="bg-white">
+    <div class="container-fluid">
+      <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                  <p class="h3 login-heading mb-4">Welcome back!</p>
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="form-label-group">
+                      <label for="username" class="form-label">이메일</label>
+                      <input type="email" name="username" id="username" class="form-control" value="">
+                    </div>
+                    <div class="form-label-group">
+                      <label for="password" class="form-label">비밀번호</label>
+                      <input type="password" name="password" id="password" class="form-control" value="">
+                    </div>
+                    <button class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">로그인</button>
+                    <div class="text-center pt-3">
+                      계정이 없으신가요?
+                      <a class="font-weight-bold" href="{% url 'register' %}">회원가입</a>
+                    </div>
+                    <div class="text-center pt-3">
+                      비밀번호를 잊으셨다면
+                      <a class="font-weight-bold" href="{% url 'password_reset' %}">비밀번호 초기화</a>
+                    </div>
+                  </form>
+                  <hr class="my-4">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock contents %}

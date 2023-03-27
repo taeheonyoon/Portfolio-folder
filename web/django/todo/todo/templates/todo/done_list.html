@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="row mb-3">
+    <h1>Done 목록</h1>
+  </div>
+  <p>
+    <a href="{% url 'todo_list' %}" class="btn btn-outline-primary">ToDo 목록</a>
+  </p>
+  <ul class="list-group">
+    <!--완료 목록 보여주기-->
+    {% for done in dones %}
+      <li class="list-group-item">
+        <a href="{% url 'todo_detail' pk=done.id %}">{{done.title}}</a>
+        {% if done.important %}
+          <span class="badge bg-danger">!</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock contents %}
